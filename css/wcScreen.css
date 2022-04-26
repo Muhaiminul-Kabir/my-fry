@@ -27,7 +27,7 @@
     font-family: 'Titillium Web', sans-serif;position: absolute;
     font-size: 12px;
     font-style: bold;
-     text-decoration-color: white;
+    color: white;
 }
 
 body { background: white;
