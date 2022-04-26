@@ -6,6 +6,8 @@
 
         opacity: 1;
 
+
+
     }
 }
 
@@ -20,7 +22,12 @@
 }
 
 
-
+#cred{
+   font-family: 'Bebas Neue', cursive;
+    font-family: 'Titillium Web', sans-serif;position: absolute;
+    font-size: 7es;
+     
+}
 
 body { background: black;
 }
