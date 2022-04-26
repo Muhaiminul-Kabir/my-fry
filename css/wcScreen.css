@@ -23,15 +23,15 @@
 
 
 
-h3{
+h4{
     color: white;
-    margin-bottom: 10px;
+
 }
 
 #cred{
    font-family: 'Bebas Neue', cursive;
     font-family: 'Titillium Web', sans-serif;position: absolute;
-    font-size: 12px;
+    font-size: 10px;
     font-style: bold;
     color: white;
     margin-bottom: 10px;
