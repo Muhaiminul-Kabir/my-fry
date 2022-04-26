@@ -28,7 +28,7 @@
     font-size: 12px;
     font-style: bold;
     color: white;
-    align-self: center;
+    margin-bottom: 10px;
 }
 
 body { background: black;
