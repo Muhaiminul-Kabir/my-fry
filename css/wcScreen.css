@@ -28,9 +28,10 @@
     font-size: 12px;
     font-style: bold;
     color: white;
+    align-self: center;
 }
 
-body { background: white;
+body { background: black;
 }
 
 .x{
