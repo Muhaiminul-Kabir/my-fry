@@ -51,7 +51,8 @@ function validate() {
        snapshot.forEach(function(data) {
           console.log(data.key);
        });
-      }) ;
+      }).catch((error) => {
+    console.error(error); ;
       
     } else {
       console.log("No data available");
