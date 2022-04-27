@@ -1,0 +1,22 @@
+{
+  "name": "webdev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wcCtrl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muhaiminul-Kabir/my-fry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Muhaiminul-Kabir/my-fry/issues"
+  },
+  "homepage": "https://github.com/Muhaiminul-Kabir/my-fry#readme",
+  "dependencies": {
+    "firebase": "^9.6.11"
+  }
+}

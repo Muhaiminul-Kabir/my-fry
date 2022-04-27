@@ -1,0 +1,31 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAU7IyEq6u0Nrx59cmHGX7MMLiVVlKVyv4",
+  authDomain: "study-bro-a4c3a.firebaseapp.com",
+  databaseURL: "https://study-bro-a4c3a-default-rtdb.firebaseio.com",
+  projectId: "study-bro-a4c3a",
+  storageBucket: "study-bro-a4c3a.appspot.com",
+  messagingSenderId: "602887793011",
+  appId: "1:602887793011:web:f79803e8c9bef60ba63d06"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+const database = getDatabase(app);
+
+function writeUserData() {
+  
+  console.log("CALLED!");
+  const db = getDatabase();
+
+  set(ref(db, 'user/' + uid), {
+    username: uid,
+    pass: upass
+  });
+}
+

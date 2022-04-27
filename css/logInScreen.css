@@ -4,7 +4,7 @@
 
 
 
-.bb{
+#login{
     border: 0;
     text-shadow: 2px 2px 4px #000000;
         background: none;
@@ -91,13 +91,13 @@ h3{
 }
 
 
-.bb { display:inline-block; margin:0; }
-.bb:after {
+#login { display:inline-block; margin:0; }
+#login:after {
   display:block;
   content: '';
   border-bottom: solid 3px #019fb6;  
  transform: scaleX(0);  
   transition: transform 250ms ease-in-out;
 }
-.bb:hover:after { transform: scaleX(1); }
-.bb:after{  transform-origin:  0% 50%; }
+#login:hover:after { transform: scaleX(1); }
+#login:after{  transform-origin:  0% 50%; }

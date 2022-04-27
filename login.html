@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -7,8 +7,7 @@
 	
 	<link rel="stylesheet" href="css/logInScreen.css">
 
-	<script src="wcCtrl.js"></script>
-
+	<script type="module" src="server.js"></script>
 	<title>Log in</title>
 	<style type="text/css">
 		
@@ -20,11 +19,17 @@
 	<div class="con" align="center">
 	    	<h3>Study Bro</h3>
 		
-			<input type="text" class="input" name="uid"><br><br>
-		    <input type="password" class="input" name="upass"><br><br><br><br>
-			<button class="bb" onclick="toHome()" >Lwog In</button>
+			<input type="text" class="input" id="uid"><br><br>
+		    <input type="password" class="input" id="upass"><br><br><br><br>
+			<button id="login" onclick="writeUserData()" >Lwog In</button>
 	</div>
 
 
+
+
+
 </body>
+
+	
+
 </html>
