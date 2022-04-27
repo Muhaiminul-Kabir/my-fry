@@ -20,6 +20,10 @@ import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.11
 // Get a reference to the database service
 const database = getDatabase(app);
 
+document.getElementById("login").onclick = function() {writeUserData()};
+
+
+
 function writeUserData() {
   
   console.log("CALLED!");
