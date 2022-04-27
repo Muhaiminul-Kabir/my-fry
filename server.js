@@ -25,7 +25,7 @@ document.getElementById("login").onclick = function() {writeUserData()};
 
 
 function writeUserData() {
-  
+  let uid = "tdfytr";
   console.log("CALLED!");
   const db = getDatabase();
 
