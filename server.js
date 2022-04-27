@@ -47,6 +47,12 @@ function validate() {
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
       console.log(snapshot.val());
+      get(child(dbRef,'user/${uid}/pass')).then(snapshot) => {
+        if(snapshot.equal(${upass}){
+          console.log("welcome??");
+        }
+      }
+      
     } else {
       console.log("No data available");
     }
