@@ -1,3 +1,6 @@
 function toLog() {
-	window.location.href="smaple.html";
+	window.location.href="login.html";
+}
+function toHome(){
+	window.location.href="index.htm";
 }

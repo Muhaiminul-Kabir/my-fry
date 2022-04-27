@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titillium+Web:wght@200&display=swap');
+
+
+
+
+
+.bb{
+    border: 0;
+    text-shadow: 2px 2px 4px #000000;
+        background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    font-size: 25px;
+    background-color: transparent;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Titillium Web', sans-serif;
+	color: white;
+    
+}
+
+body { 
+
+	background-image: url(../resource/22.png);
+	 background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+h3{
+	text-shadow: 2px 2px 4px #000000;
+	font-family: 'Bebas Neue', cursive;
+    font-family: 'Titillium Web', sans-serif;
+	color: white;
+	font-size: 50px;	
+	 
+}
+
+
+.display-flex {
+    display: flex;
+    align-items: center;
+}
+
+
+.con{
+	 margin-top: 10%;
+}
+
+
+
+
+.input{
+	text-shadow: 2px 2px 4px #000000;
+	font-family: 'Bebas Neue', cursive;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 24px;
+	border: 0;
+	box-shadow: none;
+	color: white;
+	background: transparent;
+
+	width: 30%;
+	 transition: 0.2s ease all;
+	
+}
+
+
+.input:focus{
+    outline: none;
+    border-bottom: 2px solid yellow;
+}
+
+.input:hover {
+  	    background-color: rgba(246,254,255, 0.1);
+  	    border-radius: 15px;
+}
+
+
+
+.input:hover{
+    border-bottom: solid 3px #019fb6;
+	
+}
+
+.input:focus{
+	 outline: 0;
+	border:  0;
+	border-bottom: solid 3px #019fb6;
+
+}
+
+
+.bb { display:inline-block; margin:0; }
+.bb:after {
+  display:block;
+  content: '';
+  border-bottom: solid 3px #019fb6;  
+ transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+.bb:hover:after { transform: scaleX(1); }
+.bb:after{  transform-origin:  0% 50%; }

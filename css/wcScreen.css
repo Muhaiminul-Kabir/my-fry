@@ -24,7 +24,7 @@
 
 
 h4{
-    color: white;
+    color: black;
 
 }
 
@@ -33,7 +33,7 @@ h4{
     font-family: 'Titillium Web', sans-serif;position: absolute;
     font-size: 10px;
     font-style: bold;
-    color: white;
+    color: black;
     margin-bottom: 10px;
     left: 50%;
     top: 90%;
@@ -46,10 +46,12 @@ h4{
 
 }
 
-body { background: black;
+body { 
+    background-image: url(../resource/11.png);
 }
 
 .x{
+    
     font-family: 'Bebas Neue', cursive;
     font-family: 'Titillium Web', sans-serif;position: absolute;
     left: 50%;
@@ -136,6 +138,6 @@ body { background: black;
 
 
 h1{
-   color: white;
+   color: black;
    font-size: 100px;
 }
