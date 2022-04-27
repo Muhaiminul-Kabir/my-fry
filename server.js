@@ -41,6 +41,8 @@ function writeUserData() {
 
 
 function validate() {
+  let uid = document.getElementById('uid').value;
+  let upass = document.getElementById('upass').value;
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
