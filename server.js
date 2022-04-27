@@ -20,7 +20,7 @@ import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.11
 // Get a reference to the database service
 const database = getDatabase(app);
 
-document.getElementById("login").onclick = function() {writeUserData()};
+document.getElementById("login").onclick = function() {validate()};
 
 
 
@@ -28,12 +28,27 @@ function writeUserData() {
   let uid = document.getElementById('uid').value;
   let upass = document.getElementById('upass').value;
   
-  console.log("CALLED!");
+  
   const db = getDatabase();
 
   set(ref(db, 'user/' + uid), {
     username: uid,
     pass: upass
   });
+  
+  console.log("writing succed");
 }
 
+
+function validate() {
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `user/${uid}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });  
+}
