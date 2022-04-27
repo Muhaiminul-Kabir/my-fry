@@ -46,7 +46,7 @@ function validate() {
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
-      ref.child(uid).orderByChild('pass').equalTo(upass).on("value", function(snapshot) {
+      get(child(dbRef,'user/${uid}').orderByChild('pass').equalTo(upass).on("value", function(snapshot) {
        console.log(snapshot.val());
        snapshot.forEach(function(data) {
           console.log(data.key);
