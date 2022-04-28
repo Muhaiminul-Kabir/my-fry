@@ -46,36 +46,15 @@ function validate() {
 
 
 
-
-
-
-  var ref = firebase.database().ref("users/${uid}");
-ref.once("value")
-  .then(function(snapshot) {
-    var name = snapshot.child("username").val(); // {first:"Ada",last:"Lovelace"}
-    var age = snapshot.child("pass").val(); // null
-
-    console.log(name);
-  });
-
-
-
-
-
-/*
-
-
-
-
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
-      var name = snapshot.child("pass").value; 
-      console.log(name);
+      var name = snapshot.child('pass').value; 
+      console.log(name + uid);
     } else {
       console.log("No data available");
     }
   }).catch((error) => {
     console.error(error);
-  });*/  
+  });  
 }
