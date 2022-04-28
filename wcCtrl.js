@@ -1,9 +1,9 @@
-function toLog() {
+export function toLog() {
 	window.location.href = "login.html";
 }
-function toHome() {
+export function toHome() {
 	window.location.href = "index.htm";
 }
-function toDash(uid) {
+export function toDash(uid) {
 	window.location.href = "dash.html";
 }

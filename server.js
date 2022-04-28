@@ -64,6 +64,7 @@ function isExist(uid) {
   });
 }
 
+import {toDash} from "./wcCtrl"
 
 
 function validate(uid) {
@@ -76,6 +77,7 @@ function validate(uid) {
     const data = snapshot.val();
     if (data == upass) {
       console.log("welcome");
+      toDash();
     } else {
       console.log(0);
     }
