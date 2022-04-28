@@ -56,34 +56,14 @@ function writeUserData() {
 
 
 
-function read() {
-     
-    const db = getDatabase();
-    const passRef = ref(db, 'user/' + user.username );
-    onValue(passRef, (snapshot) => {
-      const data = snapshot.child('pass').val();
-      console.log("retrived : "+data);
-    });
-}
-
-
-
-
-
-
-
-
-
 function validate() {
-  let uid = document.getElementById('uid').value;
-  let upass = document.getElementById('upass').value;
 
   read();
 
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${user.username}`)).then((snapshot) => {
     if (snapshot.exists()) {
-      var name = snapshot.child('pass').value; 
+      var name = snapshot.val().pass; 
       console.log(name + user.username);
     } else {
       console.log("No data available");
