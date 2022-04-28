@@ -7,10 +7,6 @@ import { isExist } from "./server.js";
 let name = "96768o7ti8";
 let pass2 = "ihggugugju";
 
-function ingit() {
-    console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
-    
-}
 
 let user = {
     username: name,
@@ -21,6 +17,10 @@ let user = {
 
 lginbtn.onclick = function () { isExist(user.username) };
 
+function ingit() {
+    console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
+    
+}
 
 
 
