@@ -64,7 +64,7 @@ function isExist(uid) {
   });
 }
 
-import {toDash} from "./wcCtrl"
+import {toDash} from "./wcCtrl.js"
 
 
 function validate(uid) {
