@@ -1,7 +1,9 @@
- function toLog() {
+//12
+
+function toLog() {
 	window.location.href = "login.html";
 }
-export function toHome() {
+ function toHome() {
 	window.location.href = "index.htm";
 }
 export function toDash(uid) {
