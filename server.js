@@ -59,9 +59,9 @@ function writeUserData() {
 function read() {
      
     const db = getDatabase();
-    const passRef = ref(db, 'user/' + user.username + '/pass');
+    const passRef = ref(db, 'user/' + user.username );
     onValue(passRef, (snapshot) => {
-      const data = snapshot.val();
+      const data = snapshot.child('pass').val();
       console.log("retrived : "+data);
     });
 }
