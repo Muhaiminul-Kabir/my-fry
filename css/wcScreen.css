@@ -48,6 +48,9 @@ h4{
 
 body { 
     background-image: url(../resource/11.png);
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .x{
