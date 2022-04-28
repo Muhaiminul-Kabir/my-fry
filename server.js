@@ -79,7 +79,7 @@ function validate(uid) {
     const data = snapshot.val();
     if (data == upass) {
       console.log("welcome");
-      toDash();
+      toDash(uid);
     } else {
       console.log(0);
     }
