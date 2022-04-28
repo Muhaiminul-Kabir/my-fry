@@ -58,8 +58,6 @@ function writeUserData() {
 
 function validate() {
 
-  read();
-
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${user.username}`)).then((snapshot) => {
     if (snapshot.exists()) {
