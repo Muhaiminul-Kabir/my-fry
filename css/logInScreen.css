@@ -74,13 +74,6 @@ h4{
 
 }
 
-body { 
-    background-image: url(../resource/11.png);
-    background-attachment:fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .x{
     
     font-family: 'Bebas Neue', cursive;
@@ -115,7 +108,7 @@ body {
 .bb:after {
   display:block;
   content: '';
-  border-bottom: solid 3px #019fb6;  
+  border-bottom: solid 3px #03fcc6;  
   transform: scaleX(0);  
   transition: transform 250ms ease-in-out;
 }
@@ -127,7 +120,7 @@ body {
 .bb2:after {
   display:block;
   content: '';
-  border-bottom: solid 3px #019fb6;  
+  border-bottom: solid 3px #03fcc6;  
   transform: scaleX(0);  
   transition: transform 250ms ease-in-out;
 }
@@ -138,6 +131,8 @@ body {
 
 
 .bb{
+    left: 92%;
+    top: 0%;
     border: 0;
     background: none;
     box-shadow: none;
@@ -147,9 +142,7 @@ body {
     color: white;
     font-family: 'Titillium Web', sans-serif;
     position: absolute;
-    margin-left: 1080px;
-    animation: v 5s  ;
-    animation-iteration-count: 1;
+  
 
 }
 .bb2{
@@ -197,7 +190,7 @@ body {
 
 body {
 
-    background-image: url(../resource/22.png);
+   background-color: #54615f;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -262,14 +255,14 @@ h1 {
 
 
 .input:hover {
-    border-bottom: solid 3px #019fb6;
+    border-bottom: solid 3px #03fcc6;
 
 }
 
 .input:focus {
     outline: 0;
     border: 0;
-    border-bottom: solid 3px #019fb6;
+    border-bottom: solid 3px #03fcc6;
 
 }
 
@@ -286,7 +279,7 @@ h1 {
 #login:after {
     display: block;
     content: '';
-    border-bottom: solid 3px #019fb6;
+    border-bottom: solid 3px #03fcc6;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
 }
