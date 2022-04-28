@@ -3,13 +3,11 @@ import { isExist } from "./server.js";
 
 
 
-let lginbtn = "";
-
 let name = "";
 let pass2 = "";
 
 function init() {
-    lginbtn = document.getElementById('login');
+    let lginbtn = document.getElementById('login');
 
     name = document.getElementById('uid').value;
     pass2 = document.getElementById('upass').value
