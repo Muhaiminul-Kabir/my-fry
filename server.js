@@ -57,12 +57,12 @@ function writeUserData() {
 
 
 function validate() {
-
+  console.log(user.username);
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${user.username}`)).then((snapshot) => {
     if (snapshot.exists()) {
-      var name = snapshot.val().pass; 
-      console.log(name + user.username);
+      
+      console.log(snapshot.val());
     } else {
       console.log("No data available");
     }
