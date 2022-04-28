@@ -20,7 +20,7 @@ import { getDatabase,get,child, ref, set,onValue } from "https://www.gstatic.com
 // Get a reference to the database service
 const database = getDatabase(app);
 
-document.getElementById("login").onclick = function() {validate()};
+document.getElementById("login").onclick = function() {isExist(document.getElementById('uid').value)};
 
 
 
@@ -50,7 +50,7 @@ function writeUserData() {
 
 
 
-function isExist(params) {
+function isExist(uid) {
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
