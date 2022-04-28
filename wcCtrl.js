@@ -1,4 +1,4 @@
-export function toLog() {
+ function toLog() {
 	window.location.href = "login.html";
 }
 export function toHome() {
