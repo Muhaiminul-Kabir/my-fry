@@ -46,7 +46,8 @@ function validate() {
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
-      console.log(snapshot.child("pass").value);
+      var name = snapshot.child("pass").value; 
+      console.log(name);
     } else {
       console.log("No data available");
     }
