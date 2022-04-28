@@ -43,6 +43,30 @@ function writeUserData() {
 function validate() {
   let uid = document.getElementById('uid').value;
   let upass = document.getElementById('upass').value;
+
+
+
+
+
+
+  var ref = firebase.database().ref("users/${uid}");
+ref.once("value")
+  .then(function(snapshot) {
+    var name = snapshot.child("username").val(); // {first:"Ada",last:"Lovelace"}
+    var age = snapshot.child("pass").val(); // null
+
+    console.log(name);
+  });
+
+
+
+
+
+/*
+
+
+
+
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
@@ -53,5 +77,5 @@ function validate() {
     }
   }).catch((error) => {
     console.error(error);
-  });  
+  });*/  
 }
