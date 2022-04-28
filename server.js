@@ -51,6 +51,7 @@ export function isExist(uid) {
 
       validate(uid);
     } else {
+      alert("Account doesn't exist on thoughts")
       console.log("No data available");
     }
   }).catch((error) => {
