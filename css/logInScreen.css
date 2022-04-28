@@ -142,6 +142,11 @@ h4{
     color: white;
     font-family: 'Titillium Web', sans-serif;
     position: absolute;
+
+      
+    animation: vIn 5s  ;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
   
 
 }
