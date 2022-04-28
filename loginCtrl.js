@@ -4,7 +4,7 @@ import { isExist } from "./server.js";
  let lginbtn = document.getElementById('login');
 
 
-let name = "96768o7ti8";
+let name = "error";
 let pass2 = "ihggugugju";
 
 
@@ -19,6 +19,8 @@ lginbtn.onclick = function () { isExist(user.username) };
 
 function ingit() {
     console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
+
+    user.username = document.getElementById('uid').value ;
     
 }
 
