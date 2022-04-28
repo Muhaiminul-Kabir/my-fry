@@ -20,7 +20,7 @@ lginbtn.onclick = function () { isExist(user.username) };
 function ingit() {
     console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
 
-    user.username = document.getElementById('uid').value ;
+    console.log("djhd"+document.getElementById('uid').value) ;
     
 }
 
