@@ -3,17 +3,18 @@ import { isExist } from "./server.js";
 
 
 
+let lginbtn = document.getElementById('login');
+
+let name = document.getElementById('uid').value;
+let pass2 = document.getElementById('upass').value 
+
+
 const user = {
-    username: document.getElementById('uid').value,
-    pass: document.getElementById('upass').value
+    username: name,
+    pass: pass2
   };
 
   
-let lginbtn = document.getElementById('login');
-
-
-
-
 
 lginbtn.onclick = function(){isExist(user.username)};
 
