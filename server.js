@@ -15,18 +15,18 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-import { getDatabase,get,child, ref, set,onValue } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+import { getDatabase, get, child, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
 
 // Get a reference to the database service
 const database = getDatabase(app);
 
-document.getElementById("login").onclick = function() {isExist(document.getElementById('uid').value)};
+document.getElementById("login").onclick = function () { isExist(document.getElementById('uid').value) };
 
 
 
-const user ={
-    username : document.getElementById('uid').value,
-    pass: document.getElementById('upass').value
+const user = {
+  username: document.getElementById('uid').value,
+  pass: document.getElementById('upass').value
 };
 
 
@@ -36,15 +36,15 @@ const user ={
 function writeUserData() {
   let uid = document.getElementById('uid').value;
   let upass = document.getElementById('upass').value;
-  
-  
+
+
   const db = getDatabase();
 
   set(ref(db, 'user/' + uid), {
     username: uid,
     pass: upass
   });
-  
+
   console.log("writing succed");
 }
 
@@ -54,31 +54,31 @@ function isExist(uid) {
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
-      
+
       validate(uid);
     } else {
       console.log("No data available");
     }
   }).catch((error) => {
     console.error(error);
-  }); 
+  });
 }
 
 
 
 function validate(uid) {
-  
+
   let upass = document.getElementById('upass').value;
-  
-const db = getDatabase();
-const starCountRef = ref(db, 'user/' + uid + '/pass');
-onValue(starCountRef, (snapshot) => {
-  const data = snapshot.val();
-  if(data == upass){
-    console.log("welcome");
-  }else{
-    console.log(0);
-  }
-});
+
+  const db = getDatabase();
+  const starCountRef = ref(db, 'user/' + uid + '/pass');
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data == upass) {
+      console.log("welcome");
+    } else {
+      console.log(0);
+    }
+  });
 }
 
