@@ -1,1 +1,1 @@
-document.getElementById("u1").innerHTML = "New text!";
+document.getElementById("u1").innerHTML = "null";
