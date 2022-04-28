@@ -52,17 +52,14 @@ function writeUserData() {
 
 
 
-
-
-
-
 function validate() {
-  console.log(user.username);
+  let uid = document.getElementById('uid').value;
+  let upass = document.getElementById('upass').value;
   const dbRef = ref(getDatabase());
-  get(child(dbRef, `user/${user.username}`)).then((snapshot) => {
+  get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
       
-      console.log(snapshot.val().child("pass"));
+      console.log(snapshot.pass);
     } else {
       console.log("No data available");
     }
