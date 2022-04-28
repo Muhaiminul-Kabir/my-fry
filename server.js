@@ -43,7 +43,7 @@ export function writeUserData() {
 
 
 export function isExist(uid) {
-  alert(uid);
+  
   
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
@@ -70,10 +70,12 @@ export function validate(uid) {
     const data = snapshot.val();
     if (data == upass) {
       console.log("welcome");
-      window.location.href = "dash.html";
+      alert("Congratulations!! You were successfully logged in");
+      //window.location.href = "dash.html";
       
     } else {
       console.log(0);
+      alert("Sorry.. you've entered incorrect password");
     }
   });
 }
