@@ -24,6 +24,15 @@ document.getElementById("login").onclick = function() {validate()};
 
 
 
+const user ={
+    username : document.getElementById('uid').value,
+    pass: document.getElementById('upass').value
+};
+
+
+
+
+
 function writeUserData() {
   let uid = document.getElementById('uid').value;
   let upass = document.getElementById('upass').value;
@@ -57,4 +66,19 @@ function validate() {
   }).catch((error) => {
     console.error(error);
   });  
+}
+
+
+
+
+function read() {
+  // body...
+  import { getDatabase, ref, onValue} from "firebase/database";
+
+const db = getDatabase();
+const passRef = ref(db, 'user/' + user.username + '/pass');
+onValue(passRef, (snapshot) => {
+  const data = snapshot.val();
+  console.log(data);
+});
 }
