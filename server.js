@@ -52,6 +52,7 @@ function writeUserData() {
 
 function isExist(uid) {
   alert(uid);
+  document.getElementById("u1").innerHTML = uid;
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
