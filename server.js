@@ -59,7 +59,7 @@ function validate() {
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
       
-      console.log(snapshot.pass);
+      console.log(get(child(dbRef, `user/$uid/pass`)));
     } else {
       console.log("No data available");
     }
