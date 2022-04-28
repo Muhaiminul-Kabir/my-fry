@@ -60,7 +60,9 @@ const db = getDatabase();
 const starCountRef = ref(db, 'user/' + uid + '/pass');
 onValue(starCountRef, (snapshot) => {
   const data = snapshot.val();
-  console.log(data);
+  if(data == upass){
+    console.log("welcome");
+  }
 });
 }
 
