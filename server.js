@@ -50,10 +50,24 @@ function writeUserData() {
 
 
 
+function isExist(params) {
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `user/${uid}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      
+      validate(uid);
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  }); 
+}
 
 
-function validate() {
-  let uid = document.getElementById('uid').value;
+
+function validate(uid) {
+  
   let upass = document.getElementById('upass').value;
   
 const db = getDatabase();
