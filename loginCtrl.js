@@ -7,7 +7,7 @@ import { isExist } from "./server.js";
 let name = "";
 let pass2 = "";
 
-function init() {
+function ingit() {
     console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
     name = document.getElementById('uid').value;
     pass2 = document.getElementById('upass').value
