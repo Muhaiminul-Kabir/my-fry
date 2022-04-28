@@ -4,7 +4,7 @@ import { isExist } from "./server.js";
  let lginbtn = document.getElementById('login');
 
 
-let name = "error";
+let name = document.getElementById('uid');
 let pass2 = "ihggugugju";
 
 
