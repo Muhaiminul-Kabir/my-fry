@@ -22,21 +22,10 @@ const database = getDatabase(app);
 
 
 
-let logbtn = document.getElementById("login");
-logbtn.onclick = function () { isExist() };
 
 
 
-const user = {
-  username: document.getElementById('uid').value,
-  pass: document.getElementById('upass').value
-};
-
-
-
-
-
-function writeUserData() {
+export function writeUserData() {
   let uid = document.getElementById('uid').value;
   let upass = document.getElementById('upass').value;
 
@@ -53,8 +42,7 @@ function writeUserData() {
 
 
 
-function isExist() {
-  let uid = document.getElementById('uid').value;
+export function isExist(uid) {
   alert(uid);
   
   const dbRef = ref(getDatabase());
@@ -72,7 +60,7 @@ function isExist() {
 
 
 
-function validate(uid) {
+export function validate(uid) {
 
   let upass = document.getElementById('upass').value;
 
@@ -82,8 +70,7 @@ function validate(uid) {
     const data = snapshot.val();
     if (data == upass) {
       console.log("welcome");
-      window.location.href = "dash.html";
-
+      
     } else {
       console.log(0);
     }
