@@ -56,15 +56,9 @@ function validate() {
   let uid = document.getElementById('uid').value;
   let upass = document.getElementById('upass').value;
   const dbRef = ref(getDatabase());
-  get(child(dbRef, `user/${uid}`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      
-      var name = snapshot.child('${uid}').orderByChild('pass').val();
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });  
+  var ref = dbRef.child('/user' + uid).orderByChild('pass');
+ref.once('value',function(snap) {
+    console.log(snap.val()); 
+});
 }
 
