@@ -20,7 +20,10 @@ import { getDatabase, get, child, ref, set, onValue } from "https://www.gstatic.
 // Get a reference to the database service
 const database = getDatabase(app);
 
-document.getElementById("login").onclick = function () { isExist() };
+
+
+let logbtn = document.getElementById("login");
+logbtn.onclick = function () { isExist() };
 
 
 
