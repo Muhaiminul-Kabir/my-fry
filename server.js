@@ -15,7 +15,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-import { getDatabase,get,child, ref, set } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+import { getDatabase,get,child, ref, set,onValue } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
 
 // Get a reference to the database service
 const database = getDatabase(app);
@@ -72,13 +72,11 @@ function validate() {
 
 
 function read() {
-  // body...
-  import { getDatabase, ref, onValue} from "firebase/database";
-
-const db = getDatabase();
-const passRef = ref(db, 'user/' + user.username + '/pass');
-onValue(passRef, (snapshot) => {
-  const data = snapshot.val();
-  console.log(data);
-});
+     
+    const db = getDatabase();
+    const passRef = ref(db, 'user/' + user.username + '/pass');
+    onValue(passRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+    });
 }
