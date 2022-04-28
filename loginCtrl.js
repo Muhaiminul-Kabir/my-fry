@@ -3,18 +3,19 @@ import { isExist } from "./server.js";
 
 
 
-let lginbtn = document.getElementById('login');
+let lginbtn = "";
 
-let name = document.getElementById('uid').value;
-let pass2 = document.getElementById('upass').value;
+let name = "";
+let pass2 = "";
 
-window.onload = (event) => {
+function init() {
     lginbtn = document.getElementById('login');
 
     name = document.getElementById('uid').value;
     pass2 = document.getElementById('upass').value
-};
-const user = {
+}
+
+let user = {
     username: name,
     pass: pass2
 };
