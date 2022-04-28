@@ -70,6 +70,7 @@ export function validate(uid) {
     const data = snapshot.val();
     if (data == upass) {
       console.log("welcome");
+      window.location.href = "dash.html";
       
     } else {
       console.log(0);
