@@ -1,7 +1,7 @@
 import { isExist } from "./server.js";
 
 
- let lginbtn = document.getElementById('login');
+let lginbtn = document.getElementById('login');
 
 
 let name = document.getElementById('uid');
@@ -14,15 +14,17 @@ let user = {
 };
 
 
-document.getElementById('h').onload = function(){ingit()};
-lginbtn.onclick = function () { document.getElementById('uid').value;
-console.log("djhd"+document.getElementById('uid').value) ;};
+document.getElementById('h').onload = function () { ingit() };
+lginbtn.onclick = function () {
+    let id = document.getElementById('uid').value;
+    isExist(id);
+};
 
 function ingit() {
     console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
 
-    
-    
+
+
 }
 
 
