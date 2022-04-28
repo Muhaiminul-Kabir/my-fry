@@ -66,7 +66,6 @@ function isExist(uid) {
   });
 }
 
-import {toDash} from "./wcCtrl.js"
 
 
 function validate(uid) {
@@ -79,7 +78,8 @@ function validate(uid) {
     const data = snapshot.val();
     if (data == upass) {
       console.log("welcome");
-      toDash(uid);
+      window.location.href = "dash.html";
+
     } else {
       console.log(0);
     }
