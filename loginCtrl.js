@@ -9,8 +9,7 @@ let pass2 = "ihggugugju";
 
 function ingit() {
     console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
-    name = document.getElementById('uid').value;
-    pass2 = document.getElementById('upass').value
+    
 }
 
 let user = {
