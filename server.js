@@ -20,7 +20,7 @@ import { getDatabase, get, child, ref, set, onValue } from "https://www.gstatic.
 // Get a reference to the database service
 const database = getDatabase(app);
 
-document.getElementById("login").onclick = function () { isExist(document.getElementById('uid').value) };
+document.getElementById("login").onclick = function () { isExist() };
 
 
 
@@ -50,7 +50,8 @@ function writeUserData() {
 
 
 
-function isExist(uid) {
+function isExist() {
+  let uid = document.getElementById('uid').value;
   alert(uid);
   document.getElementById("u1").innerHTML = uid;
   const dbRef = ref(getDatabase());
