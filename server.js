@@ -59,9 +59,7 @@ function validate() {
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
       
-      get(child(dbRef, `user/${uid}/pass`).then(snapshot) => {
-        console.log(snapshot.val());
-      });
+      var name = snapshot.orderByChild('pass').val();
     } else {
       console.log("No data available");
     }
