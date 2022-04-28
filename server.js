@@ -55,10 +55,12 @@ function writeUserData() {
 function validate() {
   let uid = document.getElementById('uid').value;
   let upass = document.getElementById('upass').value;
-  const dbRef = ref(getDatabase());
-  var ref = dbRef.child('/user' + uid).orderByChild('pass');
-ref.once('value',function(snap) {
-    console.log(snap.val()); 
-});
+  
+const db = getDatabase();
+const starCountRef = ref(db, 'user/' + uid + '/pass');
+onValue(starCountRef, (snapshot) => {
+  const data = snapshot.val();
+  console.log(data);
+}););
 }
 
