@@ -62,6 +62,8 @@ onValue(starCountRef, (snapshot) => {
   const data = snapshot.val();
   if(data == upass){
     console.log("welcome");
+  }else{
+    console.log(0);
   }
 });
 }
