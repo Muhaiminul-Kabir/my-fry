@@ -14,7 +14,7 @@ let user = {
 };
 
 
-
+document.getElementById('h').onload = function(){ingit()};
 lginbtn.onclick = function () { isExist(user.username) };
 
 function ingit() {
