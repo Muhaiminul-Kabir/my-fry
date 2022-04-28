@@ -49,24 +49,9 @@ function writeUserData() {
 }
 
 
-function validate() {
-  let uid = document.getElementById('uid').value;
-  let upass = document.getElementById('upass').value;
 
 
 
-  const dbRef = ref(getDatabase());
-  get(child(dbRef, `user/${uid}`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      var name = snapshot.child('pass').value; 
-      console.log(name + uid);
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });  
-}
 
 
 
@@ -77,6 +62,34 @@ function read() {
     const passRef = ref(db, 'user/' + user.username + '/pass');
     onValue(passRef, (snapshot) => {
       const data = snapshot.val();
-      console.log(data);
+      console.log("retrived : "+data);
     });
 }
+
+
+
+
+
+
+
+
+
+function validate() {
+  let uid = document.getElementById('uid').value;
+  let upass = document.getElementById('upass').value;
+
+  read();
+
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `user/${user.username}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      var name = snapshot.child('pass').value; 
+      console.log(name + user.username);
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });  
+}
+
