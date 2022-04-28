@@ -61,6 +61,6 @@ const starCountRef = ref(db, 'user/' + uid + '/pass');
 onValue(starCountRef, (snapshot) => {
   const data = snapshot.val();
   console.log(data);
-}););
+});
 }
 
