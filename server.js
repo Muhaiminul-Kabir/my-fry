@@ -61,7 +61,7 @@ function validate() {
       
       get(child(dbRef, `user/${uid}/pass`).then(snapshot) => {
         console.log(snapshot.val());
-      }
+      });
     } else {
       console.log("No data available");
     }
