@@ -15,12 +15,13 @@ let user = {
 
 
 document.getElementById('h').onload = function(){ingit()};
-lginbtn.onclick = function () { isExist(user.username) };
+lginbtn.onclick = function () { document.getElementById('uid').value;
+console.log("djhd"+document.getElementById('uid').value) ;};
 
 function ingit() {
     console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
 
-    console.log("djhd"+document.getElementById('uid').value) ;
+    
     
 }
 
