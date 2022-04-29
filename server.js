@@ -51,7 +51,7 @@ export function isExist(uid, isLogin) {
       isIn = true;
 
     } else {
-      if (!isLogin) {
+      if (isLogin) {
         alert("Account doesn't exist on thoughts")
         console.log("No data available");
 
