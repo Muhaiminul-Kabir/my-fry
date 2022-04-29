@@ -30,7 +30,7 @@ export function writeUserData(user, passW) {
 
   const db = getDatabase();
 
-  set(ref(db, 'user/' + uid), {
+  set(ref(db, 'user/' + user), {
     username: user,
     pass: passW
   });
