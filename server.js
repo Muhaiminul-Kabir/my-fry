@@ -23,7 +23,7 @@ const database = getDatabase(app);
 
 
 
-
+export let isIn = false;
 
 export function writeUserData(user, passW) {
 
@@ -48,7 +48,7 @@ export function isExist(uid, isLogin) {
     if (snapshot.exists()) {
 
       if (isLogin) { validate(uid); }
-      return 1;
+      isIn = true;
 
     } else {
       if (!isLogin) {
@@ -56,7 +56,7 @@ export function isExist(uid, isLogin) {
         console.log("No data available");
 
       }
-      return 0;
+      isIn = false;
     }
   }).catch((error) => {
     console.error(error);

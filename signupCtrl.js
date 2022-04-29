@@ -1,4 +1,4 @@
-import { isExist, writeUserData } from "./server.js";
+import { isExist, isIn, writeUserData } from "./server.js";
 
 let supbtn = document.getElementById('signup');
 
@@ -7,8 +7,9 @@ supbtn.onclick = function () {
     let id = document.getElementById('uid').value;
     let pass = document.getElementById('upass').value;
     let confirmPass = document.getElementById('ucpass').value;
-    console.log(isExist(id,Boolean(0)));
-    if(!isExist(id,Boolean(0))){
+    isExist(id,Boolean(0));
+    console.log(isIn);
+    if(isIn){
         if(pass == confirmPass){
             writeUserData(id,pass);
         }
