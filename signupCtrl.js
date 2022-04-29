@@ -15,7 +15,8 @@ supbtn.onclick = function () {
         }
     
     }else{
-        console.log("User already exists. Try another username");
+        console.log("user exists");
+        alert("User already exists. Try another username");
     }
 
 
