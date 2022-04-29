@@ -48,7 +48,7 @@ export function isExist(uid, isLogin) {
     if (snapshot.exists()) {
 
       if (isLogin) { validate(uid); }
-      return snapshot.exists();
+      return 1;
 
     } else {
       if (!isLogin) {
@@ -56,7 +56,7 @@ export function isExist(uid, isLogin) {
         console.log("No data available");
 
       }
-      return snapshot.exists();
+      return 0;
     }
   }).catch((error) => {
     console.error(error);
