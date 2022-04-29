@@ -12,6 +12,9 @@ supbtn.onclick = function () {
     if(!isIn){
         if(pass == confirmPass){
             writeUserData(id,pass);
+        }else{
+            console.log("didn't match");
+            alert("Password doesn't match");
         }
     
     }else{
