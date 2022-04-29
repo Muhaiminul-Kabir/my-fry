@@ -9,7 +9,7 @@ supbtn.onclick = function () {
     let confirmPass = document.getElementById('ucpass').value;
     isExist(id,Boolean(0));
     console.log(isIn);
-    if(isIn){
+    if(!isIn){
         if(pass == confirmPass){
             writeUserData(id,pass);
         }
