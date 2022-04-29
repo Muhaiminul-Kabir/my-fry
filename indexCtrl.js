@@ -19,7 +19,7 @@ let user = {
 document.getElementById('h').onload = function () { ingit() };
 lginbtn.onclick = function () {
     let id = document.getElementById('uid').value;
-    isExist(id);
+    isExist(id,Boolean(1));
 };
 
 supbtn.onclick = function () {
