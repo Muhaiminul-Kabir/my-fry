@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titillium+Web:wght@200&display=swap');
+
+
+
+
+@keyframes v {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+
+    100% {
+
+
+        opacity: 0;
+
+
+    }
+}
+
+
+@keyframes vIn3 {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+
+    100% {
+
+
+        opacity: 1;
+
+
+    }
+}
+
+
+
+@keyframes vIn {
+    0% {
+        margin-top: 70%;
+    }
+
+
+
+
+    100% {
+
+
+        margin-top: 10%;
+
+
+    }
+}
+
+
+
+
+
+h4 {
+    color: black;
+
+}
+
+#cred {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Titillium Web', sans-serif;
+    position: absolute;
+    font-size: 10px;
+    font-style: bold;
+    color: black;
+    margin-bottom: 10px;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+
+    padding: 10px;
+
+    animation: v 5s;
+    animation-iteration-count: 1;
+
+}
+
+.x {
+
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Titillium Web', sans-serif;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+
+    padding: 1px;
+
+    animation: v 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.boun {}
+
+
+.bb {
+    color: #666;
+    display: inline-block;
+    margin: 0;
+}
+
+.bb:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px #03fcc6;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.bb:hover:after {
+    transform: scaleX(1);
+}
+
+.bb:after {
+    transform-origin: 0% 50%;
+}
+
+
+.bb2 {
+    color: #666;
+    display: inline-block;
+    margin: 0;
+}
+
+.bb2:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px #03fcc6;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.bb2:hover:after {
+    transform: scaleX(1);
+}
+
+.bb2:after {
+    transform-origin: 0% 50%;
+}
+
+
+
+
+.bb {
+
+    border: 0;
+    background: none;
+    text-shadow: 2px 2px 4px #000000;
+    box-shadow: none;
+    border-radius: 0px;
+    font-size: 25px;
+    background-color: transparent;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+
+
+
+    animation: vIn3 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+
+}
+
+
+
+
+
+
+
+body {
+
+    background-color: #54615f;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+h1 {
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Titillium Web', sans-serif;
+    color: white;
+    font-size: 100px;
+
+}
+
+
+.display-flex {
+    display: flex;
+    align-items: center;
+}
+
+
+.con {
+    margin-top: 90%;
+
+    animation: vIn 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+
+
+
+.input {
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 24px;
+    border: 0;
+    box-shadow: none;
+    color: white;
+    background: transparent;
+    border-bottom: solid 1px #FFFFFF;
+
+    width: 30%;
+    transition: 0.2s ease all;
+
+
+
+}
+
+
+.input:focus {
+    outline: none;
+    border-bottom: 2px solid yellow;
+}
+
+
+.input:hover {
+    border-bottom: solid 3px #03fcc6;
+
+}
+
+.input:focus {
+    outline: 0;
+    border: 0;
+    border-bottom: solid 3px #03fcc6;
+
+}
+
+
+
+
+let lginbtn = document.getElementById('login');

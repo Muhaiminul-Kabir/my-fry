@@ -25,16 +25,14 @@ const database = getDatabase(app);
 
 
 
-export function writeUserData() {
-  let uid = document.getElementById('uid').value;
-  let upass = document.getElementById('upass').value;
+export function writeUserData(user, passW) {
 
 
   const db = getDatabase();
 
   set(ref(db, 'user/' + uid), {
-    username: uid,
-    pass: upass
+    username: user,
+    pass: passW
   });
 
   console.log("writing succed");
@@ -42,17 +40,23 @@ export function writeUserData() {
 
 
 
-export function isExist(uid) {
-  
-  
+export function isExist(uid, isLogin) {
+
+
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
 
-      validate(uid);
+      if (isLogin) { validate(uid); }
+      return true;
+
     } else {
-      alert("Account doesn't exist on thoughts")
-      console.log("No data available");
+      if (!isLogin) {
+        alert("Account doesn't exist on thoughts")
+        console.log("No data available");
+
+      }
+      return false;
     }
   }).catch((error) => {
     console.error(error);
@@ -73,7 +77,7 @@ export function validate(uid) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       //window.location.href = "dash.html";
-      
+
     } else {
       console.log(0);
       alert("Sorry.. you've entered incorrect password");
