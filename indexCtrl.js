@@ -7,9 +7,8 @@ let supbtn = document.getElementById('sup');
 
 
 document.getElementById('h').onload = function(){
-    userIP = document.getElementById('ttl').value ;
-    document.getElementById("ttl").innerHTML = "Thoughts";
-
+    userIP = document.getElementById('ip').value ;
+    
 }
 
 let name = document.getElementById('uid');

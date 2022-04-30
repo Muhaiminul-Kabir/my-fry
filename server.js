@@ -23,7 +23,7 @@ const database = getDatabase(app);
 
 
 export let isIn = false;
-export let userIP=NaN;
+export let userIP = '';
 
 export function writeUserData(user, passW) {
 
@@ -91,7 +91,7 @@ export function getIp(){
         $.getJSON("https://api.ipify.org?format=json", function (data) {
 
             // Setting text of element P with id gfg
-            userIP = data.ip;
+            $("#ip").html(data.ip);
         })
   }
   
