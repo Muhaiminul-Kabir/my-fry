@@ -13,7 +13,7 @@ supbtn.onclick = function () {
 
     let id = document.getElementById('uid').value;
     let pass = document.getElementById('upass').value;
-    let ip =  document.getElementById('uip').value;
+    let ip =  document.getElementById('uip').textContent;
     
     let confirmPass = document.getElementById('ucpass').value;
     isExist(id, Boolean(0));
