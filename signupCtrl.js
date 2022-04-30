@@ -20,7 +20,7 @@ supbtn.onclick = function () {
     console.log(isIn);
     if (!isIn) {
         if (pass == confirmPass) {
-            console.log(ip);
+            console.log(document.getElementById('uip').textContent);
             writeUserData(id, pass, ip);
         } else {
             console.log("didn't match");
