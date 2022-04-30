@@ -5,16 +5,12 @@ let supbtn = document.getElementById('signup');
 
 
 
-document.getElementById('h').onload = function(){
-    getIp();
-    console.log(document.getElementById('ip').value) ;
-    
-
-}
 
 
 supbtn.onclick = function () {
     getIp();
+    console.log(document.getElementById('ip').value) ;
+    
     let id = document.getElementById('uid').value;
     let pass = document.getElementById('upass').value;
     
