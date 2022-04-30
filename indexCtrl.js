@@ -6,6 +6,12 @@ let lginbtn = document.getElementById('login');
 let supbtn = document.getElementById('sup');
 
 
+document.getElementById('h').onload = function(){
+    userIP = document.getElementById('gfg').value ;
+    document.getElementById("gfg").innerHTML = "Thoughts";
+
+}
+
 let name = document.getElementById('uid');
 let pass2 = "ihggugugju";
 

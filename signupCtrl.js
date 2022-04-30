@@ -3,11 +3,6 @@ import { isExist, isIn, writeUserData } from "./server.js";
 let supbtn = document.getElementById('signup');
 
 
-document.getElementById('h').onload = function(){
-    userIP = document.getElementById('gfg').value ;
-    document.getElementById("gfg").innerHTML = "Sign Up";
-
-}
 
 
 
