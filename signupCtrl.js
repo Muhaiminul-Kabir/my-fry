@@ -13,13 +13,13 @@ supbtn.onclick = function () {
 
     let id = document.getElementById('uid').value;
     let pass = document.getElementById('upass').value;
-
+    let ip =  document.getElementById('uip').value;
     let confirmPass = document.getElementById('ucpass').value;
     isExist(id, Boolean(0));
     console.log(isIn);
     if (!isIn) {
         if (pass == confirmPass) {
-            writeUserData(id, pass,parseIp());
+            writeUserData(id, pass, ip);
         } else {
             console.log("didn't match");
             alert("Password doesn't match");
