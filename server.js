@@ -99,18 +99,7 @@ export function getIp() {
 
 export function parseIp() {
   getIp();
+  var ip = document.getElementById('ip').value;
+  return ip.split('.').reduce(function(ipInt, octet) { return (ipInt<<8) + parseInt(octet, 10)}, 0) >>> 0;
 
-  var v4 = '[\\d]{1-3}';
-  var v4d = '\\.';
-  var v4complete = v4 + v4d + v4 + v4d + v4 + v4d + v4
-  var v6 = '[\\da-fA-F]{0-4}';
-  var v6d = ':';
-  var v6complete = v6 + v6d + v6 + v6d + v6 + v6d + v6 + v6d + v6 + v6d + v6 + v6d + v6 + v6d + v6;
-  var regex = new RegExp('(' + v4complete + '(\\:\d+){0,1}|'
-    + '::|::1|'
-    + '\\[::\\]:\\d+|\\[::1\\]:\\d+|'
-    + v6complete + '|'
-    + '\\[' + v6complete + '\\]:\\d+' + ')', 'g');
-  var mystring = document.getElementById('ip').value;
-  return mystring.match(regex);
 }
