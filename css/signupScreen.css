@@ -278,4 +278,11 @@ h1 {
 
 
 
-let lginbtn = document.getElementById('login');
+p {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Courier Prime', monospace;
+    font-family: 'Titillium Web', sans-serif;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
