@@ -13,7 +13,7 @@ document.getElementById('h').onload = function(){
 
 
 supbtn.onclick = function () {
-    
+    getIp();
     let id = document.getElementById('uid').value;
     let pass = document.getElementById('upass').value;
     
