@@ -1,4 +1,4 @@
-import { isExist, isIn, writeUserData } from "./server.js";
+import { userIP,isExist, isIn, writeUserData } from "./server.js";
 
 let supbtn = document.getElementById('signup');
 
