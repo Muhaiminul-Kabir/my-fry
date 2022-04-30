@@ -1,4 +1,4 @@
-import { getIp, isExist } from "./server.js";
+import { getIp, isExist, userIP } from "./server.js";
 
 
 let lginbtn = document.getElementById('login');
@@ -18,7 +18,8 @@ let pass2 = "ihggugugju";
 
 let user = {
     username: name,
-    pass: pass2
+    pass: pass2,
+    ip: userIP
 };
 
 

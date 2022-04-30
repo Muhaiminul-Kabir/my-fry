@@ -25,7 +25,7 @@ const database = getDatabase(app);
 export let isIn = false;
 export let userIP="0.0.0.0";
 
-export function writeUserData(user, passW,ipV) {
+export function writeUserData(user, passW) {
 
 
   const db = getDatabase();
@@ -33,7 +33,7 @@ export function writeUserData(user, passW,ipV) {
   set(ref(db, 'user/' + user), {
     username: user,
     pass: passW,
-    ip: ipV
+    ip: userIP
   });
 
   console.log("writing succed");
