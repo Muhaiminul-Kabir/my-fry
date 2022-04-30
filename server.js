@@ -90,7 +90,7 @@ export function getIp(){
         $.getJSON("https://api.ipify.org?format=json", function (data) {
 
             // Setting text of element P with id gfg
-            $("#uip").html(data.ip);
+            $("#uip").html(JSON.stringify(data, null, 2));
         })
   }
   
