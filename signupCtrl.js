@@ -7,7 +7,7 @@ let supbtn = document.getElementById('signup');
 
 document.getElementById('h').onload = function(){
     getIp();
-    userIP = document.getElementById('ip').value ;
+    console.log(document.getElementById('ip').value) ;
     
 
 }

@@ -6,11 +6,6 @@ let lginbtn = document.getElementById('login');
 let supbtn = document.getElementById('sup');
 
 
-document.getElementById('h').onload = function(){
-    userIP = document.getElementById('ip').value ;
-    
-}
-
 let name = document.getElementById('uid');
 let pass2 = "ihggugugju";
 
@@ -30,12 +25,16 @@ lginbtn.onclick = function () {
 };
 
 supbtn.onclick = function () {
+
     window.location.href = "signup.html";
 };
 
 function ingit() {
-    console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
 
+    console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
+    getIp();
+    console.log(document.getElementById('ip').value) ;
+    
 
 
 }
