@@ -1,20 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titillium+Web:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:wght@700&family=Titillium+Web:wght@200&display=swap');
 
 
 
+@keyframes v {
+    0% {
+        opacity: 0;
+    }
 
-@keyframes v{
-    0%{opacity: 0;}
-    
-    25%{
+    25% {
         opacity: 1;
     }
-    
-    50%{
-        opacity : 1;
+
+    50% {
+        opacity: 1;
     }
-    
-    
+
+
     100% {
 
 
@@ -26,18 +28,20 @@
 
 
 
-@keyframes vIn{
-    0%{opacity: 0;}
-    
-    25%{
+@keyframes vIn {
+    0% {
         opacity: 0;
     }
-    
-    50%{
-        opacity : 0;
+
+    25% {
+        opacity: 0;
     }
-    
-    
+
+    50% {
+        opacity: 0;
+    }
+
+
     100% {
 
 
@@ -51,14 +55,15 @@
 
 
 
-h4{
+h4 {
     color: black;
 
 }
 
-#cred{
-   font-family: 'Bebas Neue', cursive;
-    font-family: 'Titillium Web', sans-serif;position: absolute;
+#cred {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Titillium Web', sans-serif;
+    position: absolute;
     font-size: 10px;
     font-style: bold;
     color: black;
@@ -67,26 +72,27 @@ h4{
     top: 90%;
     transform: translate(-50%, -50%);
 
-    padding: 10px; 
+    padding: 10px;
 
-    animation: v 5s  ;
+    animation: v 5s;
     animation-iteration-count: 1;
 
 }
 
-.x{
-    
+.x {
+
     font-family: 'Bebas Neue', cursive;
-    font-family: 'Titillium Web', sans-serif;position: absolute;
+    font-family: 'Titillium Web', sans-serif;
+    position: absolute;
     left: 50%;
     top: 20%;
     transform: translate(-50%, -50%);
 
-    padding: 1px; 
+    padding: 1px;
 
-    animation: v 5s  ;
+    animation: v 5s;
     animation-iteration-count: 1;
-    animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
 
 }
 
@@ -95,42 +101,69 @@ h4{
 
 
 
+p {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Courier Prime', monospace;
+    font-family: 'Titillium Web', sans-serif;
+    animation: vIn 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 
-
-
-
-
-.boun{
 }
 
 
-.bb { color: #666;display:inline-block; margin:0; }
+
+
+
+.bb {
+    color: #666;
+    display: inline-block;
+    margin: 0;
+}
+
 .bb:after {
-  display:block;
-  content: '';
-  border-bottom: solid 3px #03fcc6;  
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
+    display: block;
+    content: '';
+    border-bottom: solid 3px #03fcc6;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
 }
-.bb:hover:after { transform: scaleX(1); }
-.bb:after{  transform-origin:  0% 50%; }
+
+.bb:hover:after {
+    transform: scaleX(1);
+}
+
+.bb:after {
+    transform-origin: 0% 50%;
+}
 
 
-.bb2 { color: #666;display:inline-block; margin:0; }
+.bb2 {
+    color: #666;
+    display: inline-block;
+    margin: 0;
+}
+
 .bb2:after {
-  display:block;
-  content: '';
-  border-bottom: solid 3px #03fcc6;  
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
+    display: block;
+    content: '';
+    border-bottom: solid 3px #03fcc6;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
 }
-.bb2:hover:after { transform: scaleX(1); }
-.bb2:after{  transform-origin:  0% 50%; }
+
+.bb2:hover:after {
+    transform: scaleX(1);
+}
+
+.bb2:after {
+    transform-origin: 0% 50%;
+}
 
 
 
 
-.bb{
+.bb {
     left: 92%;
     top: 0%;
     border: 0;
@@ -143,14 +176,15 @@ h4{
     font-family: 'Titillium Web', sans-serif;
     position: absolute;
 
-      
-    animation: vIn 5s  ;
+
+    animation: vIn 5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-  
+
 
 }
-.bb2{
+
+.bb2 {
     border: 0;
     background: none;
     box-shadow: none;
@@ -161,7 +195,7 @@ h4{
     font-family: 'Titillium Web', sans-serif;
     position: absolute;
     margin-left: 1170px;
-    animation: v 5s  ;
+    animation: v 5s;
     animation-iteration-count: 1;
 
 }
@@ -195,7 +229,7 @@ h4{
 
 body {
 
-   background-color: #54615f;
+    background-color: #54615f;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -238,10 +272,10 @@ h1 {
 
     width: 30%;
     transition: 0.2s ease all;
-    
-    animation: vIn 5s  ;
+
+    animation: vIn 5s;
     animation-iteration-count: 1;
-    animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
 
 
 }
@@ -252,9 +286,7 @@ h1 {
     border-bottom: 2px solid yellow;
 }
 
-.input:hover {
-   
-}
+.input:hover {}
 
 
 
@@ -274,8 +306,8 @@ h1 {
 #login {
     display: inline-block;
     margin: 0;
-      
-    animation: vIn 5s  ;
+
+    animation: vIn 5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -295,4 +327,3 @@ h1 {
 #login:after {
     transform-origin: 0% 50%;
 }
-
