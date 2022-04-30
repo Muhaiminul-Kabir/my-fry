@@ -279,10 +279,12 @@ h1 {
 
 
 p {
+    color: #03fcc6;
+    font-weight: bold;
+   
     font-family: 'Bebas Neue', cursive;
     font-family: 'Courier Prime', monospace;
     font-family: 'Titillium Web', sans-serif;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+   
 
 }
