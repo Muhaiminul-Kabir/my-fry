@@ -1,4 +1,4 @@
-import { getIp, isExist, userIP } from "./server.js";
+import { getIp, isExist} from "./server.js";
 
 
 let lginbtn = document.getElementById('login');
