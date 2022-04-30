@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-
+import{*}
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -85,3 +85,16 @@ export function validate(uid) {
   });
 }
 
+export function getIp(){
+  
+        $.getJSON("https://api.ipify.org?format=json", function (data) {
+
+            // Setting text of element P with id gfg
+            $("#gfg").html(data.ip);
+        })
+  }
+  
+
+
+
+  

@@ -1,4 +1,4 @@
-import { isExist } from "./server.js";
+import { getIp, isExist } from "./server.js";
 
 
 let lginbtn = document.getElementById('login');
@@ -18,8 +18,9 @@ let user = {
 
 document.getElementById('h').onload = function () { ingit() };
 lginbtn.onclick = function () {
-    let id = document.getElementById('uid').value;
-    isExist(id,Boolean(1));
+   /* let id = document.getElementById('uid').value;
+    isExist(id,Boolean(1));*/
+    getIp();
 };
 
 supbtn.onclick = function () {
