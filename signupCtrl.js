@@ -1,15 +1,9 @@
-import { userIP,isExist, isIn, writeUserData } from "./server.js";
+import {getIp, userIP,isExist, isIn, writeUserData } from "./server.js";
 
 let supbtn = document.getElementById('signup');
 
 
 
-
-document.getElementById('h').onload = function(){
-    userIP = document.getElementById('ttl').value ;
-    document.getElementById("ttl").innerHTML = "Sign Up";
-
-}
 
 
 supbtn.onclick = function () {
