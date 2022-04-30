@@ -19,9 +19,8 @@ let user = {
 
 document.getElementById('h').onload = function () { ingit() };
 lginbtn.onclick = function () {
-   /* let id = document.getElementById('uid').value;
-    isExist(id,Boolean(1));*/
-    getIp();
+    let id = document.getElementById('uid').value;
+    isExist(id,Boolean(1));
 };
 
 supbtn.onclick = function () {
@@ -33,7 +32,6 @@ function ingit() {
 
     console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
     getIp();
-    console.log(document.getElementById('ip').value) ;
     
 
 

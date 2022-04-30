@@ -85,21 +85,18 @@ export function validate(uid) {
   });
 }
 
-export function getIp() {
+export function getIp(){
+  
+        $.getJSON("https://api.ipify.org?format=json", function (data) {
 
-  $.getJSON("https://api.ipify.org?format=json", function (data) {
-
-    // Setting text of element P with id gfg
-    $("#ip").html(data.ip);
-  })
-}
-
+            // Setting text of element P with id gfg
+            $("#uip").html(data.ip);
+        })
+  }
+  
 
 
 
-export function parseIp() {
-  getIp();
-  var ip = document.getElementById('ip').value;
-  return ip.split('.').reduce(function(ipInt, octet) { return (ipInt<<8) + parseInt(octet, 10)}, 0) >>> 0;
-
-}
+  export function parseIp(){
+   
+  }
