@@ -23,9 +23,8 @@ const database = getDatabase(app);
 
 
 export let isIn = false;
-export var userIP = '';
 
-export function writeUserData(user, passW) {
+export function writeUserData(user, passW, userIP) {
 
 
   const db = getDatabase();

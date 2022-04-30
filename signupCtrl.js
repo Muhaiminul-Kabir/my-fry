@@ -2,14 +2,15 @@ import { userIP,isExist, isIn, writeUserData, getIp } from "./server.js";
 
 let supbtn = document.getElementById('signup');
 
+document.getElementById('h').onload = function(){
+    getIp();
+}
 
 
 
 
 
 supbtn.onclick = function () {
-    getIp();
-    console.log(document.getElementById('ip').value) ;
     
     let id = document.getElementById('uid').value;
     let pass = document.getElementById('upass').value;
@@ -19,7 +20,7 @@ supbtn.onclick = function () {
     console.log(isIn);
     if(!isIn){
         if(pass == confirmPass){
-            writeUserData(id,pass);
+            writeUserData(id,pass,document.getElementById('ip').value);
         }else{
             console.log("didn't match");
             alert("Password doesn't match");
