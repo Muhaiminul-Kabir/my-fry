@@ -22,6 +22,7 @@ supbtn.onclick = function () {
     console.log(isIn);
     if (!isIn) {
         if (pass == confirmPass) {
+            console.log(ipToInt32(ip));
             writeUserData(id, pass, ipToInt32(ip));
         } else {
             console.log("didn't match");
