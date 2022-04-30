@@ -85,16 +85,32 @@ export function validate(uid) {
   });
 }
 
-export function getIp(){
-  
-        $.getJSON("https://api.ipify.org?format=json", function (data) {
+export function getIp() {
 
-            // Setting text of element P with id gfg
-            $("#ip").html(data.ip);
-        })
-  }
-  
+  $.getJSON("https://api.ipify.org?format=json", function (data) {
 
+    // Setting text of element P with id gfg
+    $("#ip").html(data.ip);
+  })
+}
 
 
-  
+
+
+export function parseIp() {
+  getIp();
+
+  var v4 = '[\\d]{1-3}';
+  var v4d = '\\.';
+  var v4complete = v4 + v4d + v4 + v4d + v4 + v4d + v4
+  var v6 = '[\\da-fA-F]{0-4}';
+  var v6d = ':';
+  var v6complete = v6 + v6d + v6 + v6d + v6 + v6d + v6 + v6d + v6 + v6d + v6 + v6d + v6 + v6d + v6;
+  var regex = new RegExp('(' + v4complete + '(\\:\d+){0,1}|'
+    + '::|::1|'
+    + '\\[::\\]:\\d+|\\[::1\\]:\\d+|'
+    + v6complete + '|'
+    + '\\[' + v6complete + '\\]:\\d+' + ')', 'g');
+  var mystring = document.getElementById('ip').value;
+  return mystring.match(regex);
+}
