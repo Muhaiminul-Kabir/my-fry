@@ -10,12 +10,6 @@ let name = document.getElementById('uid');
 let pass2 = "ihggugugju";
 
 
-let user = {
-    username: name,
-    pass: pass2,
-    ip: userIP
-};
-
 
 document.getElementById('h').onload = function () { ingit() };
 lginbtn.onclick = function () {
