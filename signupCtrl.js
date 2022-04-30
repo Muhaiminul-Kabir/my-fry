@@ -14,12 +14,15 @@ supbtn.onclick = function () {
     let id = document.getElementById('uid').value;
     let pass = document.getElementById('upass').value;
     let ip =  document.getElementById('uip').value;
+    let ipToInt32 = (ip) => {
+        return ip.split(".").reduce((int, v) => int * 256 + +v);
+      }
     let confirmPass = document.getElementById('ucpass').value;
     isExist(id, Boolean(0));
     console.log(isIn);
     if (!isIn) {
         if (pass == confirmPass) {
-            writeUserData(id, pass, ip);
+            writeUserData(id, pass, ipToInt32(ip));
         } else {
             console.log("didn't match");
             alert("Password doesn't match");
