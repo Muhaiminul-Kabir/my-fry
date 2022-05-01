@@ -27,7 +27,7 @@ export let isIn = false;
 
 export function ipTrue(db,userIP) {
   
-  set(ref(db, 'ip/' + userIP.replace(".","-")), {
+  set(ref(db, 'ip/' + userIP.replaceAll(".","-")), {
     logged: true
   });
 
