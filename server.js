@@ -24,6 +24,17 @@ const database = getDatabase(app);
 
 export let isIn = false;
 
+
+export function ipTrue(userIP) {
+  
+  set(ref(db, 'ip/' + userIP), {
+    logged: true
+  });
+
+}
+
+
+
 export function writeUserData(user, passW, userIP) {
 
 
@@ -32,9 +43,10 @@ export function writeUserData(user, passW, userIP) {
   set(ref(db, 'user/' + user), {
     username: user,
     pass: passW,
-    ip: userIP
+    
   });
 
+  ipTrue(userIP);
   console.log("writing succed");
 }
 
@@ -94,6 +106,9 @@ export function getIp(){
         })
   }
   
+
+
+
 
 
 
