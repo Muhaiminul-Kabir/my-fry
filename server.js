@@ -23,7 +23,7 @@ const database = getDatabase(app);
 
 
 export let isIn = false;
-
+export let IP = "";
 
 export function writeIP(db, userIP,state) {
 
@@ -103,6 +103,7 @@ export function getIp() {
 
     // Setting text of element P with id gfg
     $("#uip").html(data.ip);
+    IP = data.ip;
   })
 }
 

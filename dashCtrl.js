@@ -1,4 +1,4 @@
-import { ipInUse,getIp } from "./server.js"
+import { IP,ipInUse,getIp } from "./server.js"
 
 function sleep(milliseconds) {
     const date = Date.now();
@@ -9,7 +9,6 @@ function sleep(milliseconds) {
   }
 
 document.getElementById('h').onload = function(){
-    getIp();
-    sleep(2000);
-    ipInUse(document.getElementById('uip').textContent);
+    
+    ipInUse(IP);
 }
