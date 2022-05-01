@@ -109,15 +109,11 @@ export function getIp() {
 }
 
 export function getIP() {
-  var http = require('http');
-
-  http.get({ 'host': 'api.ipify.org', 'port': 80, 'path': '/' }, function (resp) {
-    resp.on('data', function (ip) {
-      console.log("My public IP address is: " + ip);
-    });
-  });
+  return getIPFromAmazon();
 }
-
+function getIPFromAmazon() {
+  fetch("https://checkip.amazonaws.com/").then(res => res.text()).then(data => console.log(data))
+}
 
 
 
