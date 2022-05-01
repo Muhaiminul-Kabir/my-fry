@@ -1,1 +1,5 @@
-document.getElementById("u1").innerHTML = "null";
+import { ipInUse } from "./server.js"
+
+document.getElementById('h').onload = function(){
+    ipInUse(document.getElementById(ip).textContent);
+}

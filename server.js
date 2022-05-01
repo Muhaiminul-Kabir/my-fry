@@ -25,10 +25,10 @@ const database = getDatabase(app);
 export let isIn = false;
 
 
-export function ipTrue(db,userIP) {
-  
-  set(ref(db, 'ip/' + userIP.replaceAll(".","-")), {
-    logged: true
+export function writeIP(db, userIP,state) {
+
+  set(ref(db, 'ip/' + userIP.replaceAll(".", "-")), {
+    logged: state
   });
 
 }
@@ -41,12 +41,12 @@ export function writeUserData(user, passW, userIP) {
   const db = getDatabase();
 
   set(ref(db, 'user/' + user), {
-    
+
     pass: passW,
-    
+
   });
 
-  ipTrue(db,userIP);
+  writeIP(db, userIP,true);
   console.log("writing succed");
 }
 
@@ -89,7 +89,7 @@ export function validate(uid) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       //window.location.href = "dash.html";
-      ipTrue(db,document.getElementById('ip').textContent)
+      writeIP(db, document.getElementById('ip').textContent,true)
     } else {
       console.log(0);
       alert("Sorry.. you've entered incorrect password");
@@ -97,21 +97,35 @@ export function validate(uid) {
   });
 }
 
-export function getIp(){
-  
-        $.getJSON("https://api.ipify.org?format=json", function (data) {
+export function getIp() {
 
-            // Setting text of element P with id gfg
-            $("#uip").html(data.ip);
-        })
-  }
-  
+  $.getJSON("https://api.ipify.org?format=json", function (data) {
 
+    // Setting text of element P with id gfg
+    $("#uip").html(data.ip);
+  })
+}
 
 
 
 
 
-  export function parseIp(){
-   
-  }
+
+
+export function parseIp() {
+
+}
+
+
+export function ipInUse(userIP) {
+  const db = getDatabase();
+  const starCountRef = ref(db, 'ip/' + userIP + '/logged');
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+
+      location.replace("https://my-fry.vercel.app/index.html");     
+      writeIP(db,userIP,false);
+    } 
+  });
+}
