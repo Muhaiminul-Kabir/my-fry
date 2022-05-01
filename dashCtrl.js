@@ -5,5 +5,6 @@ import { IP,ipInUse,getIP } from "./server.js"
 
 
 document.getElementById('h').onload = function(){
+   typeof getIP();
    ipInUse(getIP);
 }
