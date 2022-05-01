@@ -1,6 +1,9 @@
 import { IP,ipInUse,getIp } from "./server.js"
 
+
+
 document.getElementById('h').onload = function(){
     getIp();
-    ipInUse(IP);
+    let ip = document.getElementById('uip').textContent;
+    ipInUse(ip);
 }
