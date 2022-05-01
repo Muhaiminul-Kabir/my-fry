@@ -25,7 +25,7 @@ const database = getDatabase(app);
 export let isIn = false;
 export let IP = "";
 
-export function writeIP(db, userIP,state) {
+export function writeIP(db, userIP, state) {
 
   set(ref(db, 'ip/' + userIP.replaceAll(".", "-")), {
     logged: state
@@ -46,7 +46,7 @@ export function writeUserData(user, passW, userIP) {
 
   });
 
-  writeIP(db, userIP,"in");
+  writeIP(db, userIP, "in");
   console.log("writing succed");
 }
 
@@ -89,7 +89,7 @@ export function validate(uid) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       //window.location.href = "dash.html";
-      writeIP(db, document.getElementById('ip').textContent,"in")
+      writeIP(db, document.getElementById('ip').textContent, "in")
     } else {
       console.log(0);
       alert("Sorry.. you've entered incorrect password");
@@ -104,19 +104,18 @@ export function getIp() {
     // Setting text of element P with id gfg
     $("#uip").html(data.ip);
 
-     
+
   })
 }
 
 export function getIP() {
+  var http = require('http');
 
-  $.getJSON("https://api.ipify.org?format=string", function (data) {
-
-    // Setting text of element P with id gfg
-    return data.ip;
-
-     
-  })
+  http.get({ 'host': 'api.ipify.org', 'port': 80, 'path': '/' }, function (resp) {
+    resp.on('data', function (ip) {
+      console.log("My public IP address is: " + ip);
+    });
+  });
 }
 
 
@@ -134,16 +133,16 @@ export function parseIp() {
 
 export function ipInUse(userIP) {
   const db = getDatabase();
-  let ipv = userIP.replaceAll(".","-");
+  let ipv = userIP.replaceAll(".", "-");
   console.group('ip/' + ipv + '/logged');
   const starCountRef = ref(db, 'ip/' + ipv + '/logged');
   onValue(starCountRef, (snapshot) => {
-    const data =snapshot.val();
+    const data = snapshot.val();
     console.log(data);
     if (data == "in") {
-       writeIP(db,userIP,"out");
-      location.replace("https://my-fry.vercel.app/index.html");     
-     
-    } 
+      writeIP(db, userIP, "out");
+      location.replace("https://my-fry.vercel.app/index.html");
+
+    }
   });
 }
