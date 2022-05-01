@@ -46,7 +46,7 @@ export function writeUserData(user, passW, userIP) {
 
   });
 
-  writeIP(db, userIP,true);
+  writeIP(db, userIP,"in");
   console.log("writing succed");
 }
 
@@ -89,7 +89,7 @@ export function validate(uid) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       //window.location.href = "dash.html";
-      writeIP(db, document.getElementById('ip').textContent,true)
+      writeIP(db, document.getElementById('ip').textContent,"in")
     } else {
       console.log(0);
       alert("Sorry.. you've entered incorrect password");
@@ -121,12 +121,12 @@ export function ipInUse(userIP) {
   const db = getDatabase();
   const starCountRef = ref(db, 'ip/' + userIP.replaceAll(".","-") + '/logged');
   onValue(starCountRef, (snapshot) => {
-    const data =true;
+    const data =snapshot.val();
     console.log(data);
-    if (data) {
-      
+    if (data == "in") {
+       writeIP(db,userIP,"out");
       location.replace("https://my-fry.vercel.app/index.html");     
-      writeIP(db,userIP,false);
+     
     } 
   });
 }
