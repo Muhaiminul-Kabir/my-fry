@@ -1,4 +1,4 @@
-import { ipInUse } from "./server.js"
+import { ipInUse,getIp } from "./server.js"
 
 document.getElementById('h').onload = function(){
     getIp();
