@@ -122,8 +122,9 @@ export function ipInUse(userIP) {
   const starCountRef = ref(db, 'ip/' + userIP + '/logged');
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
+    console.log(data);
     if (data) {
-      console.log('shj');
+      
       location.replace("https://my-fry.vercel.app/index.html");     
       writeIP(db,userIP,false);
     } 
