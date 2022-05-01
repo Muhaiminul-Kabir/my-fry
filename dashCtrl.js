@@ -1,4 +1,4 @@
-import { IP,ipInUse,getIp } from "./server.js"
+import { IP,ipInUse,getIP } from "./server.js"
 
 
 
