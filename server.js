@@ -110,7 +110,7 @@ export function getIp() {
 
 export function getIP() {
 
-  $.getJSON("https://api.ipify.org?format=json", function (data) {
+  $.getJSON("https://api.ipify.org?format=string", function (data) {
 
     // Setting text of element P with id gfg
     return data.ip;
