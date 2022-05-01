@@ -121,7 +121,7 @@ export function ipInUse(userIP) {
   const db = getDatabase();
   const starCountRef = ref(db, 'ip/' + userIP.replaceAll(".","-") + '/logged');
   onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val();
+    const data =true;
     console.log(data);
     if (data) {
       
