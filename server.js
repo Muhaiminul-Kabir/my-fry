@@ -25,9 +25,10 @@ const database = getDatabase(app);
 export let isIn = false;
 
 
-export function ipTrue(db,userIP) {
+export function ipTrue(db,user,userIP) {
   
-  set(ref(db, 'ip/' + userIP), {
+  set(ref(db, 'ip/' + user), {
+    ip: userIP,
     logged: true
   });
 
@@ -41,12 +42,12 @@ export function writeUserData(user, passW, userIP) {
   const db = getDatabase();
 
   set(ref(db, 'user/' + user), {
-    username: user,
-    pass: passW,
+    
+    pass: passW
     
   });
 
-  ipTrue(db,userIP);
+  ipTrue(db,user,userIP);
   console.log("writing succed");
 }
 
@@ -89,7 +90,7 @@ export function validate(uid) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       //window.location.href = "dash.html";
-      ipTrue(db,document.getElementById('ip').textContent)
+      ipTrue(db,uid,document.getElementById('ip').textContent)
     } else {
       console.log(0);
       alert("Sorry.. you've entered incorrect password");
