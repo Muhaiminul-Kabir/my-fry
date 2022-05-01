@@ -119,7 +119,9 @@ export function parseIp() {
 
 export function ipInUse(userIP) {
   const db = getDatabase();
-  const starCountRef = ref(db, 'ip/' + userIP.replaceAll(".","-") + '/logged');
+  let ipv = userIP.replaceAll(".","-");
+  console.group('ip/' + ipv + '/logged');
+  const starCountRef = ref(db, 'ip/' + ipv + '/logged');
   onValue(starCountRef, (snapshot) => {
     const data =snapshot.val();
     console.log(data);
