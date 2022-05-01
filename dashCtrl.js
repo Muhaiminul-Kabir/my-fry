@@ -3,9 +3,7 @@ import { IP,ipInUse,getIp } from "./server.js"
 
 
 document.getElementById('uip').onload = function(){
-    
-    let ip = document.getElementById('uip').textContent;
-    ipInUse(ip);
+    getIp();
 }
 
 
