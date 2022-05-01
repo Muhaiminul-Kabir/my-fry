@@ -113,7 +113,7 @@ export function getIP() {
   $.getJSON("https://api.ipify.org?format=json", function (data) {
 
     // Setting text of element P with id gfg
-    alert(data.ip);
+    return data.ip;
 
      
   })
