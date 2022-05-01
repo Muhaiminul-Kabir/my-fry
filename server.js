@@ -103,7 +103,7 @@ export function getIp() {
 
     // Setting text of element P with id gfg
     $("#uip").html(data.ip);
-    IP = data.ip;
+     
   })
 }
 
