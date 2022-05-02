@@ -208,25 +208,11 @@ export function ipInUse() {
 
     console.log("i is " + IP);
     console.log("Fetchimng................");
-
-
-
-
-    const db = getDatabase();
-
-    console.group('ip/' + IP.replaceAll(".", "-") + '/logged');
-
-    let userIP = IP.replaceAll(".", "-");
-    const starCountRef = ref(db, 'ip/' + userIP + '/logged');
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data);
-      if (data == "in") {
+    if (data) {
         writeIP(db, userIP, "out", "no");
         location.replace("https://my-fry.vercel.app/index.html");
 
       }
-    });
-
+  
   }
 }
