@@ -64,17 +64,18 @@ export function isExist(uid, isLogin) {
   const dbRef = ref(getDatabase());
   get(child(dbRef, `user/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
-
-      if (isLogin) { validate(uid); }
       isIn = true;
+      if (isLogin) { validate(uid); }
+      
 
     } else {
+      isIn = false;
       if (isLogin) {
         alert("Account doesn't exist on thoughts")
         console.log("No data available");
 
       }
-      isIn = false;
+     
     }
   }).catch((error) => {
     console.error(error);
@@ -94,8 +95,9 @@ export function validate(uid) {
     if (data == upass) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
-      window.location.href = "dash.html";
       writeIP(db, IP, "in")
+      window.location.href = "dash.html";
+      
     } else {
       console.log(0);
       alert("Sorry.. you've entered incorrect password");
