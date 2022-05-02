@@ -111,14 +111,8 @@ export function extractIP() {
 export function getIP() {
   fetch('https://api.ipify.org?format=json')
     .then(results => results.json())
-    .then(data => {
-      setTimeout(function () {
-
-        IP = data.ip;
-
-      }, 5000)
-    })
-
+    .then(data => { console.log(data.ip) })
+    
 }
 
 
@@ -155,5 +149,5 @@ export function ipInUse() {
 
       }
     });
-  }, 5000)
+  }, 10000)
 }
