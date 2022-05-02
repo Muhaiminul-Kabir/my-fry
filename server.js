@@ -173,7 +173,9 @@ export function processIP(func) {
 
 function isValid() {
   const db = getDatabase();
-  const starCountRef = ref(db, 'ip/' + IP.replaceAll(".", "-") + '/validated');
+
+  let userIP = IP.replaceAll(".", "-");
+  const starCountRef = ref(db, 'ip/' + userIP + '/logged');
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     return data;
@@ -219,7 +221,7 @@ export function ipInUse() {
       const data = snapshot.val();
       console.log(data);
       if (data == "in") {
-        writeIP(db, userIP, "out", false);
+        writeIP(db, userIP, "out", "no");
         location.replace("https://my-fry.vercel.app/index.html");
 
       }
