@@ -35,6 +35,14 @@ export function setIP(ip) {
 
 
 
+export function setValidation(state) {
+  
+  validated = state;
+  console.log(validated);
+}
+
+
+
 export function writeIP(db, userIP, state) {
 
   set(ref(db, 'ip/' + userIP.replaceAll(".", "-")), {
@@ -100,7 +108,7 @@ export function validate(uid) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       writeIP(db, IP, "in");
-      validated = true;
+      setValidation(true);
       window.location.href = "dash.html";
 
     } else {
