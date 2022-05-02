@@ -130,7 +130,21 @@ export function parseIp() {
 
 
 export function ipInUse() {
-  var userIP = getIP();
+  
+
+
+
+  var userIP = '';
+  $.getJSON("https://api.ipify.org?format=json", function (data) {
+
+    userIP = data.ip;
+
+
+  })
+
+
+
+
   const db = getDatabase();
   //let ipv = userIP.replaceAll(".", "-");
   console.group('ip/' + userIP + '/logged');
