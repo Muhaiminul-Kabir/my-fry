@@ -33,6 +33,8 @@ export function setIP(ip) {
   IP = ip;
 }
 
+
+
 export function writeIP(db, userIP, state) {
 
   set(ref(db, 'ip/' + userIP.replaceAll(".", "-")), {
@@ -97,7 +99,8 @@ export function validate(uid) {
     if (data == upass) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
-      writeIP(db, IP, "in")
+      writeIP(db, IP, "in");
+      validated = true;
       window.location.href = "dash.html";
 
     } else {
