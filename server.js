@@ -139,7 +139,7 @@ export function ipInUse() {
     const db = getDatabase();
     
     console.group('ip/' + IP.replaceAll(".","-") + '/logged');
-    const starCountRef = ref(db, 'ip/' + ipv + '/logged');
+    const starCountRef = ref(db, 'ip/' + IP.replaceAll(".","-") + '/logged');
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       console.log(data);
