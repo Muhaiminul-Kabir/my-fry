@@ -167,6 +167,7 @@ export function parseIp() {
 
 export function ipInUse() {
   console.log(validated);
+  validated = true;
   if (!validated) {
 
 
