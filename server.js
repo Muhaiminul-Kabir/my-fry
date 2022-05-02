@@ -208,7 +208,7 @@ export function ipInUse() {
 
     console.log("i is " + IP);
     console.log("Fetchimng................");
-    if (data) {
+    if (1) {
         writeIP(db, userIP, "out", "no");
         location.replace("https://my-fry.vercel.app/index.html");
 
