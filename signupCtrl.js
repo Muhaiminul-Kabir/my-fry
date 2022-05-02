@@ -3,7 +3,8 @@ import { parseIp,isExist, isIn, writeUserData, extractIP } from "./server.js";
 let supbtn = document.getElementById('signup');
 
 document.getElementById('h').onload = function(){
-    extractIP()
+    extractIP();
+
 
 }
 

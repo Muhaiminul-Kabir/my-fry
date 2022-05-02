@@ -129,7 +129,8 @@ export function parseIp() {
 }
 
 
-export function ipInUse(userIP) {
+export function ipInUse() {
+  var userIP = extractIP();
   const db = getDatabase();
   let ipv = userIP.replaceAll(".", "-");
   console.group('ip/' + ipv + '/logged');
