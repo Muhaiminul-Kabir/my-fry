@@ -111,7 +111,7 @@ export function extractIP() {
 export function getIP() {
   $.getJSON("https://api.ipify.org?format=json", function (data) {
 
-    return data.ip;
+    return JSON.stringify(data.ip);;
 
 
   })
