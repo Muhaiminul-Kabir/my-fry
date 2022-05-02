@@ -171,15 +171,40 @@ export function processIP(func) {
 
 
 
+function isValid() {
+  const db = getDatabase();
+  const starCountRef = ref(db, 'ip/' + IP.replaceAll(".","-") + '/validated');
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data == false) {
+      return false;
+    } else {
+      return true;  
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 export function parseIp() {
 
 }
 
 
 export function ipInUse() {
-  console.log(validated);
+  console.log(isValid());
   
-  if (!validated) {
+  if (!isValid()) {
 
 
     console.log("i is " + IP);
