@@ -38,7 +38,7 @@ export function setIP(ip) {
 export function setValidation(state) {
 
   validated = state;
-  console.log(validated);
+ // console.log(validated);
 }
 
 
@@ -105,10 +105,11 @@ export function validate(uid) {
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     if (data == upass) {
+      setValidation(true);
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       writeIP(db, IP, "in");
-      validated = true;
+     
       window.location.href = "dash.html";
 
     } else {
