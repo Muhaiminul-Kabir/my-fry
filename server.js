@@ -35,18 +35,12 @@ export function setIP(ip) {
 
 
 
-export function setValidation(state) {
 
-  validated = state;
- // console.log(validated);
-}
-
-
-
-export function writeIP(db, userIP, state) {
+export function writeIP(db, userIP, state,isValid) {
 
   set(ref(db, 'ip/' + userIP.replaceAll(".", "-")), {
-    logged: state
+    logged: state,
+    validated: isValid
   });
 
 }
@@ -64,7 +58,7 @@ export function writeUserData(user, passW, userIP) {
 
   });
 
-  writeIP(db, userIP, "in");
+  writeIP(db, userIP, "in",true);
   console.log("writing succed");
 }
 
@@ -105,10 +99,10 @@ export function validate(uid) {
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     if (data == upass) {
-      setValidation(true);
+      
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
-      writeIP(db, IP, "in");
+      writeIP(db, IP, "in",true);
      
       window.location.href = "dash.html";
 
