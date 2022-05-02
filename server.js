@@ -25,6 +25,12 @@ const database = getDatabase(app);
 export let isIn = false;
 export var IP = "nop";
 
+
+
+export function setIP(ip){
+  IP = ip;
+}
+
 export function writeIP(db, userIP, state) {
 
   set(ref(db, 'ip/' + userIP.replaceAll(".", "-")), {
