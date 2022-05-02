@@ -131,7 +131,7 @@ export function parseIp() {
 
 export function ipInUse() {
   
-  let userIP = "";
+  var userIP = "";
 
  console.log("Fetchimng................");
 
