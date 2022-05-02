@@ -143,13 +143,14 @@ export function getIP() {
 */
 
 export function processIP(func) {
+  const controller = new AbortController();
   fetch('https://api.ipify.org?format=json')
     .then(results => results.json())
     .then(data => { IP = data.ip; })
     .then(() => {
       
       func();
-      return;
+      controller.abort();
     });
 
 
@@ -188,7 +189,7 @@ export function ipInUse() {
       const data = snapshot.val();
       console.log(data);
       if (data == "in") {
-        writeIP(db, userIP, "out");
+        writeIP(db, userIP, "out",false);
         location.replace("https://my-fry.vercel.app/index.html");
 
       }
