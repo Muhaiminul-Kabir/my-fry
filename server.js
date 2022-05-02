@@ -137,8 +137,8 @@ export function ipInUse() {
 
 
     const db = getDatabase();
-    //let ipv = userIP.replaceAll(".", "-");
-    console.group('ip/' + IP + '/logged');
+    
+    console.group('ip/' + IP.replaceAll(".","-") + '/logged');
     const starCountRef = ref(db, 'ip/' + ipv + '/logged');
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
