@@ -205,7 +205,7 @@ export function ipInUse() {
 
   if (validated == "no") {
     const db = getDatabase();
-
+    let userIP = IP.replaceAll(".", "-");
 
     console.log("i is " + IP);
     console.log("Fetchimng................");
