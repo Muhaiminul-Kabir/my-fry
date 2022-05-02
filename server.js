@@ -131,12 +131,15 @@ export function parseIp() {
 
 export function ipInUse() {
   
+  let userIP = "";
+
  console.log("Fetchimng................");
 
   fetch('https://api.ipify.org?format=json')
   .then(results => results.json())    
-  .then(data => console.log(data.ip));
-
+  .then(data => console.log(data.ip))
+  .then(data => userIP = data.ip);
+   
 
 
 
