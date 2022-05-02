@@ -88,7 +88,7 @@ export function validate(uid) {
     if (data == upass) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
-      //window.location.href = "dash.html";
+      window.location.href = "dash.html";
       writeIP(db, document.getElementById('ip').textContent, "in")
     } else {
       console.log(0);
