@@ -89,7 +89,7 @@ export function validate(uid) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       window.location.href = "dash.html";
-      writeIP(db, document.getElementById('ip').textContent, "in")
+      writeIP(db, IP, "in")
     } else {
       console.log(0);
       alert("Sorry.. you've entered incorrect password");
