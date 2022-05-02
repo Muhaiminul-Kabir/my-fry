@@ -134,7 +134,7 @@ export function ipInUse() {
 
 
 
-  var userIP = '';
+  let userIP = '';
   $.getJSON("https://api.ipify.org?format=json", function (data) {
 
     userIP = data.ip;
