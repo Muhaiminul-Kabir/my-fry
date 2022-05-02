@@ -23,7 +23,7 @@ const database = getDatabase(app);
 
 
 export let isIn = false;
-export let IP = "";
+export var IP = "nop";
 
 export function writeIP(db, userIP, state) {
 
@@ -109,12 +109,9 @@ export function extractIP() {
 }
 
 export function getIP() {
-  $.getJSON("https://api.ipify.org?format=json", function (data) {
-
-    return JSON.stringify(data.ip);;
-
-
-  })
+  fetch('https://api.ipify.org?format=json')
+  .then(results => results.json())    
+  .then(data => IP = data.ip)
 }
 
 
@@ -130,43 +127,24 @@ export function parseIp() {
 
 
 export function ipInUse() {
-
-  var userIP = "";
-
+  getIP();
+  console.log("i is "+ IP);
   console.log("Fetchimng................");
 
-  fetch('https://api.ipify.org?format=json')
-    .then(results => results.json())
-    .then(data => function () {
 
 
 
-      const db = getDatabase();
-      //let ipv = userIP.replaceAll(".", "-");
-      console.group('ip/' + data.ip + '/logged');
-      const starCountRef = ref(db, 'ip/' + ipv + '/logged');
-      onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log(data);
-        if (data == "in") {
-          writeIP(db, userIP, "out");
-          location.replace("https://my-fry.vercel.app/index.html");
-
-        }
-      });
+  const db = getDatabase();
+  //let ipv = userIP.replaceAll(".", "-");
+  console.group('ip/' + IP + '/logged');
+  const starCountRef = ref(db, 'ip/' + ipv + '/logged');
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+    if (data == "in") {
+      writeIP(db, userIP, "out");
+      location.replace("https://my-fry.vercel.app/index.html");
 
     }
-
-
-
-
-
-
-
-
-    )
-    .then(data => userIP = data.ip);
-
-
-
+  });
 }
