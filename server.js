@@ -178,7 +178,7 @@ function isValid() {
   const starCountRef = ref(db, 'ip/' + userIP + '/logged');
   onValue(starCountRef, (snapshot) => {
     var data = snapshot.val();
-    return data;
+    console.log(data);
   });
 }
 
@@ -202,7 +202,7 @@ export function parseIp() {
 export function ipInUse() {
   console.log(isValid());
 
-  if (isValid() == "no") {
+  if (1) {
 
 
     console.log("i is " + IP);
