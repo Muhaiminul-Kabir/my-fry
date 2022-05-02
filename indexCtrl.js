@@ -14,7 +14,7 @@ let pass2 = "ihggugugju";
 document.getElementById('h').onload = function () { ingit() };
 lginbtn.onclick = function () {
    
-    let id = document.getElementById('uid').value;
+    var id = document.getElementById('uid').value;
    
     getIP();
     setTimeout(function () {
