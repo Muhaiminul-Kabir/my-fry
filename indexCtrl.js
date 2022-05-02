@@ -20,7 +20,7 @@ lginbtn.onclick = function () {
     setTimeout(function () {
         console.log(IP);
         isExist(id, Boolean(1));
-    }, 5000)
+    }, 1000)
 };
 
 supbtn.onclick = function () {
