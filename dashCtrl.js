@@ -8,5 +8,5 @@ document.getElementById('h').onload = function(){
    processIP(ipInUse);
 }
 window.onbeforeunload = function() {
-   return "Your text here";
+   alert(1000000000);
  };
