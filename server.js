@@ -37,7 +37,7 @@ export function setIP(ip) {
 
 
 export function writeIP(db, userIP, state,isValid) {
-
+  
   set(ref(db, 'ip/' + userIP.replaceAll(".", "-")), {
     logged: state,
     validated: isValid
@@ -46,6 +46,15 @@ export function writeIP(db, userIP, state,isValid) {
 }
 
 
+
+
+
+
+
+export function leave(){
+  const db = getDatabase();
+  writeIP(db,IP,"out",false);
+}
 
 export function writeUserData(user, passW, userIP) {
 
