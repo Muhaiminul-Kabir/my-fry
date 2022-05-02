@@ -1,4 +1,4 @@
-import { setIP, extractIP, IP, isExist } from "./server.js";
+import { setIP, extractIP, IP, isExist, validated } from "./server.js";
 
 
 let lginbtn = document.getElementById('login');
@@ -15,6 +15,7 @@ document.getElementById('h').onload = function () { ingit() };
 lginbtn.onclick = function () {
     extractIP();
     let id = document.getElementById('uid').value;
+    validated = true;
     setIP(document.getElementById('uip').textContent);
     isExist(id, Boolean(1));
 };

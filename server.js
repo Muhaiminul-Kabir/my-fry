@@ -24,10 +24,11 @@ const database = getDatabase(app);
 
 export let isIn = false;
 export var IP = "nop";
+export var validated = false;
 
 
 
-export function setIP(ip){
+export function setIP(ip) {
   console.log(ip);
   IP = ip;
 }
@@ -67,7 +68,7 @@ export function isExist(uid, isLogin) {
     if (snapshot.exists()) {
       isIn = true;
       if (isLogin) { validate(uid); }
-      
+
 
     } else {
       isIn = false;
@@ -76,7 +77,7 @@ export function isExist(uid, isLogin) {
         console.log("No data available");
 
       }
-     
+
     }
   }).catch((error) => {
     console.error(error);
@@ -98,7 +99,7 @@ export function validate(uid) {
       alert("Congratulations!! You were successfully logged in");
       writeIP(db, IP, "in")
       window.location.href = "dash.html";
-      
+
     } else {
       console.log(0);
       alert("Sorry.. you've entered incorrect password");
@@ -121,7 +122,7 @@ export function getIP() {
   fetch('https://api.ipify.org?format=json')
     .then(results => results.json())
     .then(data => { IP = data.ip; })
-    
+
 }
 
 
@@ -137,28 +138,30 @@ export function parseIp() {
 
 
 export function ipInUse() {
-  getIP();
-  setTimeout(function () {
-    console.log("i is " + IP);
-    console.log("Fetchimng................");
+  if (!validated) {
+    getIP();
+    setTimeout(function () {
+      console.log("i is " + IP);
+      console.log("Fetchimng................");
 
 
 
 
-    const db = getDatabase();
-    
-    console.group('ip/' + IP.replaceAll(".","-") + '/logged');
-  
-    let userIP = IP.replaceAll(".","-");
-    const starCountRef = ref(db, 'ip/' + userIP + '/logged');
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data);
-      if (data == "in") {
-        writeIP(db, userIP, "out");
-        location.replace("https://my-fry.vercel.app/index.html");
+      const db = getDatabase();
 
-      }
-    });
-  }, 10000)
+      console.group('ip/' + IP.replaceAll(".", "-") + '/logged');
+
+      let userIP = IP.replaceAll(".", "-");
+      const starCountRef = ref(db, 'ip/' + userIP + '/logged');
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        if (data == "in") {
+          writeIP(db, userIP, "out");
+          location.replace("https://my-fry.vercel.app/index.html");
+
+        }
+      });
+    }, 10000)
+  }
 }
