@@ -149,6 +149,7 @@ export function processIP(func) {
     .then(() => {
       
       func();
+      return;
     });
 
 
@@ -167,7 +168,7 @@ export function parseIp() {
 
 export function ipInUse() {
   console.log(validated);
-  validated = true;
+  
   if (!validated) {
 
 
