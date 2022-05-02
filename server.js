@@ -111,7 +111,7 @@ export function extractIP() {
 export function getIP() {
   fetch('https://api.ipify.org?format=json')
     .then(results => results.json())
-    .then(data => { console.log(data.ip) })
+    .then(data => { IP = data.ip; })
     
 }
 
