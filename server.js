@@ -130,30 +130,43 @@ export function parseIp() {
 
 
 export function ipInUse() {
-  
+
   var userIP = "";
 
- console.log("Fetchimng................");
+  console.log("Fetchimng................");
 
   fetch('https://api.ipify.org?format=json')
-  .then(results => results.json())    
-  .then(data => console.log(typeof data.ip))
-  .then(data => userIP = data.ip);
-   
+    .then(results => results.json())
+    .then(data => function () {
 
 
 
-  const db = getDatabase();
-  //let ipv = userIP.replaceAll(".", "-");
-  console.group('ip/' + userIP + '/logged');
-  const starCountRef = ref(db, 'ip/' + ipv + '/logged');
-  onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val();
-    console.log(data);
-    if (data == "in") {
-      writeIP(db, userIP, "out");
-      location.replace("https://my-fry.vercel.app/index.html");
+      const db = getDatabase();
+      //let ipv = userIP.replaceAll(".", "-");
+      console.group('ip/' + data.ip + '/logged');
+      const starCountRef = ref(db, 'ip/' + ipv + '/logged');
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        if (data == "in") {
+          writeIP(db, userIP, "out");
+          location.replace("https://my-fry.vercel.app/index.html");
+
+        }
+      });
 
     }
-  });
+
+
+
+
+
+
+
+
+    )
+    .then(data => userIP = data.ip);
+
+
+
 }
