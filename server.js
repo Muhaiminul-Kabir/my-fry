@@ -110,8 +110,15 @@ export function extractIP() {
 
 export function getIP() {
   fetch('https://api.ipify.org?format=json')
-  .then(results => results.json())    
-  .then(data => {console.log(data.ip)})
+    .then(results => results.json())
+    .then(data => {
+      setTimeout(function () {
+
+        IP = data.ip;
+
+      }, 5000)
+    })
+
 }
 
 
@@ -128,23 +135,25 @@ export function parseIp() {
 
 export function ipInUse() {
   getIP();
-  console.log("i is "+ IP);
-  console.log("Fetchimng................");
+  setTimeout(function () {
+    console.log("i is " + IP);
+    console.log("Fetchimng................");
 
 
 
 
-  const db = getDatabase();
-  //let ipv = userIP.replaceAll(".", "-");
-  console.group('ip/' + IP + '/logged');
-  const starCountRef = ref(db, 'ip/' + ipv + '/logged');
-  onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val();
-    console.log(data);
-    if (data == "in") {
-      writeIP(db, userIP, "out");
-      location.replace("https://my-fry.vercel.app/index.html");
+    const db = getDatabase();
+    //let ipv = userIP.replaceAll(".", "-");
+    console.group('ip/' + IP + '/logged');
+    const starCountRef = ref(db, 'ip/' + ipv + '/logged');
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+      if (data == "in") {
+        writeIP(db, userIP, "out");
+        location.replace("https://my-fry.vercel.app/index.html");
 
-    }
-  });
+      }
+    });
+  }, 5000)
 }
