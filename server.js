@@ -201,7 +201,7 @@ export function parseIp() {
 
 
 export function ipInUse() {
-  ;
+  isValid();
 
   if (validated == "no") {
     const db = getDatabase();
