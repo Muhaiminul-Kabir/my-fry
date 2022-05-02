@@ -1,4 +1,4 @@
-import { IP,ipInUse,getIP } from "./server.js"
+import { IP,ipInUse,getIP, processIP } from "./server.js"
 
 
 
@@ -6,5 +6,5 @@ import { IP,ipInUse,getIP } from "./server.js"
 
 document.getElementById('h').onload = function(){
   
-   ipInUse();
+   processIP(ipInUse);
 }
