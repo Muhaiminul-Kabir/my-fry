@@ -24,7 +24,7 @@ const database = getDatabase(app);
 
 export let isIn = false;
 export var IP = "nop";
-export var validated = false;
+export var validated = "no";
 
 
 
@@ -179,6 +179,7 @@ function isValid() {
   onValue(starCountRef, (snapshot) => {
     var data = snapshot.val();
     console.log(data);
+    validated = data;
   });
 }
 
@@ -200,9 +201,9 @@ export function parseIp() {
 
 
 export function ipInUse() {
-  console.log(isValid());
+  ;
 
-  if (1) {
+  if (validated == "no") {
 
 
     console.log("i is " + IP);
