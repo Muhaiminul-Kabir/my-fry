@@ -130,7 +130,7 @@ export function parseIp() {
 
 
 export function ipInUse() {
-  var userIP = extractIP();
+  var userIP = getIP();
   const db = getDatabase();
   //let ipv = userIP.replaceAll(".", "-");
   console.group('ip/' + userIP + '/logged');
