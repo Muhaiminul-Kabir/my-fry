@@ -150,7 +150,9 @@ export function getIP() {
 export function processIP(func) {
   fetch('https://api.ipify.org?format=json')
     .then(results => results.json())
+    .then(data => { IP = data.ip; })
     .then(() => {
+      
       func();
     });
 
