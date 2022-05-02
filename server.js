@@ -108,7 +108,7 @@ export function validate(uid) {
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       writeIP(db, IP, "in");
-      setValidation(true);
+      validated = true;
       window.location.href = "dash.html";
 
     } else {
