@@ -1,9 +1,9 @@
-import { parseIp,isExist, isIn, writeUserData, getIp } from "./server.js";
+import { parseIp,isExist, isIn, writeUserData, extractIP } from "./server.js";
 
 let supbtn = document.getElementById('signup');
 
 document.getElementById('h').onload = function(){
-    getIp();
+    extractIP()
 
 }
 

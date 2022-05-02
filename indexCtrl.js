@@ -1,4 +1,4 @@
-import { getIp, isExist} from "./server.js";
+import { extractIP, isExist} from "./server.js";
 
 
 let lginbtn = document.getElementById('login');
@@ -25,7 +25,7 @@ supbtn.onclick = function () {
 function ingit() {
 
     console.log("dhfjhdjfhjdhfjdhfjdhfjhdjhf");
-    getIp();
+    extractIP();
     
 
 

@@ -97,7 +97,7 @@ export function validate(uid) {
   });
 }
 
-export function getIp() {
+export function extractIP() {
 
   $.getJSON("https://api.ipify.org?format=json", function (data) {
 
@@ -109,10 +109,12 @@ export function getIp() {
 }
 
 export function getIP() {
-  return getIPFromAmazon();
-}
-function getIPFromAmazon() {
-  fetch("https://checkip.amazonaws.com/").then(res => res.text()).then(data => console.log(data))
+  $.getJSON("https://api.ipify.org?format=json", function (data) {
+
+    return data.ip;
+
+
+  })
 }
 
 
