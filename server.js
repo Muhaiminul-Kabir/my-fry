@@ -53,7 +53,7 @@ export function writeIP(db, userIP, state,isValid) {
 
 export function leave(){
   const db = getDatabase();
-  writeIP(db,IP,"out",false);
+  writeIP(db,IP,"out","no");
 }
 
 export function writeUserData(user, passW, userIP) {
@@ -67,7 +67,7 @@ export function writeUserData(user, passW, userIP) {
 
   });
 
-  writeIP(db, userIP, "in",true);
+  writeIP(db, userIP, "in","yes");
   console.log("writing succed");
 }
 
@@ -111,7 +111,7 @@ export function validate(uid) {
       
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
-      writeIP(db, IP, "in",true);
+      writeIP(db, IP, "in","yes");
      
       window.location.href = "dash.html";
 
@@ -176,10 +176,10 @@ function isValid() {
   const starCountRef = ref(db, 'ip/' + IP.replaceAll(".","-") + '/validated');
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
-    if (data == false) {
-      return false;
+    if (data == "no") {
+      return "no";
     } else {
-      return true;  
+      return "yes";  
     }
   });
 }
@@ -204,7 +204,7 @@ export function parseIp() {
 export function ipInUse() {
   console.log(isValid());
   
-  if (!isValid()) {
+  if (isValid() == "no") {
 
 
     console.log("i is " + IP);
