@@ -36,8 +36,8 @@ export function setIP(ip) {
 
 
 
-export function writeIP(db, userIP, state,isValid) {
-  
+export function writeIP(db, userIP, state, isValid) {
+
   set(ref(db, 'ip/' + userIP.replaceAll(".", "-")), {
     logged: state,
     validated: isValid
@@ -51,9 +51,9 @@ export function writeIP(db, userIP, state,isValid) {
 
 
 
-export function leave(){
+export function leave() {
   const db = getDatabase();
-  writeIP(db,IP,"out","no");
+  writeIP(db, IP, "out", "no");
 }
 
 export function writeUserData(user, passW, userIP) {
@@ -67,7 +67,7 @@ export function writeUserData(user, passW, userIP) {
 
   });
 
-  writeIP(db, userIP, "in","yes");
+  writeIP(db, userIP, "in", "yes");
   console.log("writing succed");
 }
 
@@ -108,11 +108,11 @@ export function validate(uid) {
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     if (data == upass) {
-      
+
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
-      writeIP(db, IP, "in","yes");
-     
+      writeIP(db, IP, "in", "yes");
+
       window.location.href = "dash.html";
 
     } else {
@@ -157,7 +157,7 @@ export function processIP(func) {
     .then(results => results.json())
     .then(data => { IP = data.ip; })
     .then(() => {
-      
+
       func();
       controller.abort();
     });
@@ -173,14 +173,10 @@ export function processIP(func) {
 
 function isValid() {
   const db = getDatabase();
-  const starCountRef = ref(db, 'ip/' + IP.replaceAll(".","-") + '/validated');
+  const starCountRef = ref(db, 'ip/' + IP.replaceAll(".", "-") + '/validated');
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
-    if (data == "no") {
-      return "no";
-    } else {
-      return "yes";  
-    }
+    return data;
   });
 }
 
@@ -203,7 +199,7 @@ export function parseIp() {
 
 export function ipInUse() {
   console.log(isValid());
-  
+
   if (isValid() == "no") {
 
 
@@ -223,7 +219,7 @@ export function ipInUse() {
       const data = snapshot.val();
       console.log(data);
       if (data == "in") {
-        writeIP(db, userIP, "out",false);
+        writeIP(db, userIP, "out", false);
         location.replace("https://my-fry.vercel.app/index.html");
 
       }
