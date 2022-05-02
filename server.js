@@ -131,16 +131,11 @@ export function parseIp() {
 
 export function ipInUse() {
   
+ console.log("Fetchimng................");
 
-
-
-  let userIP = '';
-  $.getJSON("https://api.ipify.org?format=json", function (data) {
-
-    userIP = data.ip;
-
-
-  })
+  fetch('https://api.ipify.org?format=json')
+  .then(results => results.json())    
+  .then(data => console.log(data.ip));
 
 
 
