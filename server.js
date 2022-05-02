@@ -28,6 +28,7 @@ export var IP = "nop";
 
 
 export function setIP(ip){
+  console.log(ip);
   IP = ip;
 }
 
