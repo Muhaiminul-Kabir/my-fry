@@ -138,6 +138,7 @@ export function parseIp() {
 
 
 export function ipInUse() {
+  console.log(validated);
   if (!validated) {
     getIP();
     setTimeout(function () {
