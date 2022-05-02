@@ -204,6 +204,7 @@ export function ipInUse() {
   ;
 
   if (validated == "no") {
+    const db = getDatabase();
 
 
     console.log("i is " + IP);
