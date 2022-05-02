@@ -137,7 +137,7 @@ export function ipInUse() {
 
   fetch('https://api.ipify.org?format=json')
   .then(results => results.json())    
-  .then(data => console.log(data.ip))
+  .then(data => console.log(typeof data.ip))
   .then(data => userIP = data.ip);
    
 
