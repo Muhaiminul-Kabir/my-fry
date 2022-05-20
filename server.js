@@ -175,7 +175,7 @@ function isValid() {
   const db = getDatabase();
 
   let userIP = IP.replaceAll(".", "-");
-  const starCountRef = ref(db, 'ip/' + userIP + '/logged');
+  const starCountRef = ref(db, 'ip/' + userIP + '/validated');
   onValue(starCountRef, (snapshot) => {
     var data = snapshot.val();
     console.log(data);
