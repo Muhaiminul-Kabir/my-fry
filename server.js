@@ -28,22 +28,6 @@ export var validated = "no";
 
 
 
-export function setIP(ip) {
-  console.log(ip);
-  IP = ip;
-}
-
-
-
-
-export function writeIP(db, userIP, state, isValid) {
-
-  set(ref(db, 'ip/' + userIP.replaceAll(".", "-")), {
-    logged: state,
-    validated: isValid
-  });
-
-}
 
 
 
@@ -51,12 +35,7 @@ export function writeIP(db, userIP, state, isValid) {
 
 
 
-export function leave() {
-  const db = getDatabase();
-  writeIP(db, IP, "out", "no");
-}
-
-export function writeUserData(user, passW, userIP) {
+export function writeUserData(user, passW) {
 
 
   const db = getDatabase();
@@ -67,7 +46,6 @@ export function writeUserData(user, passW, userIP) {
 
   });
 
-  writeIP(db, userIP, "in", "yes");
   console.log("writing succed");
 }
 
@@ -111,9 +89,9 @@ export function validate(uid) {
 
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
-      writeIP(db, IP, "in", "yes");
+     // writeIP(db, IP, "in", "yes");
 
-      window.location.href = "dash.html";
+      window.location.href = "mainApp.html";
 
     } else {
       console.log(0);
@@ -122,23 +100,6 @@ export function validate(uid) {
   });
 }
 
-export function extractIP() {
-
-  $.getJSON("https://api.ipify.org?format=json", function (data) {
-
-    // Setting text of element P with id gfg
-    $("#uip").html(data.ip);
-
-
-  })
-}
-
-export function getIP() {
-  fetch('https://api.ipify.org?format=json')
-    .then(results => results.json())
-    .then(data => { IP = data.ip; })
-
-}
 
 
 
@@ -151,37 +112,6 @@ export function getIP() {
 
 */
 
-export function processIP(func) {
-  const controller = new AbortController();
-  fetch('https://api.ipify.org?format=json')
-    .then(results => results.json())
-    .then(data => { IP = data.ip; })
-    .then(() => {
-
-      func();
-      controller.abort();
-    });
-
-
-
-
-}
-
-
-
-
-
-function isValid() {
-  const db = getDatabase();
-
-  let userIP = IP.replaceAll(".", "-");
-  const starCountRef = ref(db, 'ip/' + userIP + '/validated');
-  onValue(starCountRef, (snapshot) => {
-    var data = snapshot.val();
-    console.log(data);
-    validated = data;
-  });
-}
 
 
 
@@ -195,25 +125,3 @@ function isValid() {
 
 
 
-export function parseIp() {
-
-}
-
-
-export function ipInUse() {
-  isValid();
-
-  if (validated == "no") {
-    const db = getDatabase();
-    let userIP = IP.replaceAll(".", "-");
-
-    console.log("i is " + IP);
-    console.log("Fetchimng................");
-    if (1) {
-        writeIP(db, userIP, "out", "no");
-        location.replace("https://my-fry.vercel.app/index.html");
-
-      }
-  
-  }
-}

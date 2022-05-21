@@ -16,7 +16,7 @@ lginbtn.onclick = function () {
    
     var id = document.getElementById('uid').value;
    
-    processIP(function(){ isExist(id, Boolean(1)) });
+    isExist(id, Boolean(1);
 };
 
 supbtn.onclick = function () {
