@@ -129,7 +129,7 @@ export function validate(uid) {
 export function pubDicWrite(umsg, utime) {
  //test
   
-  document.getElementById(elementID).innerHTML = "";
+  document.getElementById('chat-win').innerHTML = "";
   const db = getDatabase();
   var msgcnt = getCnt() + 1;
   set(ref(db, 'pubdic/' + msgcnt.toString()), {
