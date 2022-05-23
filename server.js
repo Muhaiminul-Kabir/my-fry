@@ -31,6 +31,19 @@ export var validated = "no";
 
 
 
+class txt{
+  constructor(msg,user,time){
+    this.msg = msg;
+    this.user = user;
+    this.time = time;
+  }
+}
+
+
+
+
+
+
 
 
 
@@ -114,7 +127,9 @@ export function validate(uid) {
 
 
 export function pubDicWrite(umsg, utime) {
-
+ //test
+  
+  document.getElementById(elementID).innerHTML = "";
   const db = getDatabase();
   var msgcnt = getCnt() + 1;
   set(ref(db, 'pubdic/' + msgcnt.toString()), {
@@ -142,7 +157,7 @@ function getCnt() {
   onValue(starCountRef, (snapshot) => {
     cnt = snapshot.val();
   });
-  alert(cnt);
+ // alert(cnt);
   return cnt;
 
 }
