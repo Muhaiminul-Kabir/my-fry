@@ -113,17 +113,3 @@ export function validate(uid) {
 */
 
 
-
-export function cookieFun(userName){
-  document.cookie = 
-}
-
-
-
-
-
-
-
-
-
-
