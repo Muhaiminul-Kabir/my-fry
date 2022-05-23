@@ -113,8 +113,15 @@ export function validate(uid) {
 */
 
 
-export function pubDicWrite(){
-  
+export function pubDicWrite(umsg,utime){
+
+  const db = getDatabase();
+
+  set(ref(db, 'pubdic/' ), {
+
+    msg: umsg,
+    timw: utime
+  });
 }
 
 export function pubDicRead(){
