@@ -120,7 +120,8 @@ export function pubDicWrite(umsg,utime){
   set(ref(db, 'pubdic/' ), {
 
     msg: umsg,
-    timw: utime
+    timw: utime,
+    user: sessionStorage.getItem("currentUser")
   });
 }
 
