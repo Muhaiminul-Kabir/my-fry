@@ -86,11 +86,11 @@ export function validate(uid) {
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     if (data == upass) {
-
+      sessionStorage.setItem("currentUser",uid);
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
      // writeIP(db, IP, "in", "yes");
-
+      
       window.location.href = "mainApp.html";
 
     } else {
@@ -114,7 +114,9 @@ export function validate(uid) {
 
 
 
-
+export function cookieFun(userName){
+  document.cookie = 
+}
 
 
 
