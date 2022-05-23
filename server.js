@@ -116,8 +116,8 @@ export function validate(uid) {
 export function pubDicWrite(umsg,utime){
 
   const db = getDatabase();
-
-  set(ref(db, 'pubdic/' ), {
+  var msgcnt = getCnt()+1;
+  set(ref(db, 'pubdic/'+msgcnt.toString() ), {
 
     msg: umsg,
     timw: utime,
@@ -126,5 +126,17 @@ export function pubDicWrite(umsg,utime){
 }
 
 export function pubDicRead(){
+  
+}
+
+function getCnt(){
+  var cnt = 0;
+  const db = getDatabase();
+  const starCountRef = ref(db, 'pubdic/cnt');
+  onValue(starCountRef, (snapshot) => {
+    cnt = snapshot.val();
+  });
+  alert(cnt);
+  return cnt;
   
 }
