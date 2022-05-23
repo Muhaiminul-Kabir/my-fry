@@ -86,11 +86,11 @@ export function validate(uid) {
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     if (data == upass) {
-      sessionStorage.setItem("currentUser",uid);
+      sessionStorage.setItem("currentUser", uid);
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
-     // writeIP(db, IP, "in", "yes");
-      
+      // writeIP(db, IP, "in", "yes");
+
       window.location.href = "mainApp.html";
 
     } else {
@@ -113,23 +113,28 @@ export function validate(uid) {
 */
 
 
-export function pubDicWrite(umsg,utime){
+export function pubDicWrite(umsg, utime) {
 
   const db = getDatabase();
-  var msgcnt = getCnt()+1;
-  set(ref(db, 'pubdic/'+msgcnt.toString() ), {
+  var msgcnt = getCnt() + 1;
+  set(ref(db, 'pubdic/' + msgcnt.toString()), {
 
     msg: umsg,
     timw: utime,
     user: sessionStorage.getItem("currentUser")
   });
+  set(ref(db, 'pubdic/'), {
+
+    cnt: msgcnt,
+
+  });
 }
 
-export function pubDicRead(){
-  
+export function pubDicRead() {
+
 }
 
-function getCnt(){
+function getCnt() {
   var cnt = 0;
   const db = getDatabase();
   const starCountRef = ref(db, 'pubdic/cnt');
@@ -138,5 +143,5 @@ function getCnt(){
   });
   alert(cnt);
   return cnt;
-  
+
 }
