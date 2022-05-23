@@ -113,3 +113,10 @@ export function validate(uid) {
 */
 
 
+export function pubDicWrite(){
+  
+}
+
+export function pubDicRead(){
+  
+}
