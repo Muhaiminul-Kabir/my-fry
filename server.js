@@ -156,7 +156,7 @@ function getCnt() {
   const starCountRef = ref(db, 'pubcnt/val');
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
-    cnt = data;
+   return data;
   });
  // alert(cnt);
   return cnt;
