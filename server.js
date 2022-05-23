@@ -123,9 +123,10 @@ export function pubDicWrite(umsg, utime) {
     timw: utime,
     user: sessionStorage.getItem("currentUser")
   });
-  set(ref(db, 'pubdic/'), {
+  set(ref(db, 'pubcnt/'), {
 
-    cnt: msgcnt,
+
+    val: msgcnt,
 
   });
 }
@@ -137,7 +138,7 @@ export function pubDicRead() {
 function getCnt() {
   var cnt = 0;
   const db = getDatabase();
-  const starCountRef = ref(db, 'pubdic/cnt');
+  const starCountRef = ref(db, 'pubcnt/val');
   onValue(starCountRef, (snapshot) => {
     cnt = snapshot.val();
   });
