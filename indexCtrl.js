@@ -1,4 +1,4 @@
-import { setIP, extractIP, IP, isExist, validated, getIP, processIP } from "./server.js";
+import { isExist, validated } from "./server.js";
 
 
 let lginbtn = document.getElementById('login');
