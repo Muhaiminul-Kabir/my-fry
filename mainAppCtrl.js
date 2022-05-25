@@ -1,7 +1,8 @@
-import { pubDicRead,pubDicWrite } from "./server.js";
+import { activeRead, pubDicRead,pubDicWrite } from "./server.js";
 
 $(document).ready(function () {
         load();
+        activeRead('onlist');
     });
 
 

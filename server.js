@@ -31,27 +31,47 @@ export var validated = "no";
 
 
 
-class txt{
-  constructor(msg,user,time){
+class txt {
+  constructor(msg, user, time) {
     this.msg = msg;
     this.user = user;
     this.time = time;
   }
 }
 
-function activeUser(user){
-  
+function activeUser(user) {
+
   const db = getDatabase();
 
-  set(ref(db, 'online/'+user), {
-    online:1
-    
+  set(ref(db, 'online/' + user), {
+    online: 1
+
   });
+
+
 }
 
 
+function addActiveUsers(target, user) {
+
+  document.getElementById(target).innerHTML = "<p>" + user + "</p>";
+}
+
+export function activeRead(list) {
+  const db = getDatabase();
+  const starCountRef = ref(db, `online`);
+  onValue(starCountRef, (snapshot) => {
+    snapshot.forEach(
+      function (ChildSnapShot) {
+        addActiveUsers(list, ChildSnapShot.user);
+      }
+    )
+
+  });
 
 
+
+}
 
 
 
@@ -64,7 +84,7 @@ export function writeUserData(user, passW) {
   set(ref(db, 'user/' + user), {
 
     pass: passW,
-    
+
 
   });
 
@@ -134,18 +154,18 @@ export function validate(uid) {
 
 
 */
-function rewriteDatabase(msgcnt){
+function rewriteDatabase(msgcnt) {
   const db = getDatabase();
   set(ref(db, 'pubdic/0'), {
 
-   
+
     totalmsg: msgcnt
   });
 }
 
 export function pubDicWrite(umsg, utime) {
- //test
-  
+  //test
+
   //document.getElementById('chat-win').innerHTML = "";
   const db = getDatabase();
   var msgcnt = getCnt() + 1;
@@ -154,22 +174,22 @@ export function pubDicWrite(umsg, utime) {
     msg: umsg,
     timw: utime.toString(),
     user: sessionStorage.getItem("currentUser"),
-    totalmsg: msgcnt+1
+    totalmsg: msgcnt + 1
   });
   rewriteDatabase(msgcnt);
 }
 
 
-function addMessage(htmlId,text){
+function addMessage(htmlId, text) {
   var user = sessionStorage.getItem('currentUser');
-  if(text.user == user){
-    document.getElementById(sessionStorage.getItem('targetElementId')).innerHTML += '<p style="color:#66ff00;font-weight: bold;;font-size:18px">['+text.user+']</p><p style="max-width:500px;word-wrap:break-word;">'
-                + text.msg+'<br><p style="font-size:12px">'+text.time+"</p></br>"
-                + '</p>';
-  }else{
-    document.getElementById(sessionStorage.getItem('targetElementId')).innerHTML += '<p style="color:#FF160C;font-weight: bold;;font-size:18px">['+text.user+']</p><p style="max-width:500px;word-wrap:break-word;">'
-                + text.msg+'<br><p style="font-size:12px">'+text.time+"</p></br>"
-                + '</p>';
+  if (text.user == user) {
+    document.getElementById(sessionStorage.getItem('targetElementId')).innerHTML += '<p style="color:#66ff00;font-weight: bold;;font-size:18px">[' + text.user + ']</p><p style="max-width:500px;word-wrap:break-word;">'
+      + text.msg + '<br><p style="font-size:12px">' + text.time + "</p></br>"
+      + '</p>';
+  } else {
+    document.getElementById(sessionStorage.getItem('targetElementId')).innerHTML += '<p style="color:#FF160C;font-weight: bold;;font-size:18px">[' + text.user + ']</p><p style="max-width:500px;word-wrap:break-word;">'
+      + text.msg + '<br><p style="font-size:12px">' + text.time + "</p></br>"
+      + '</p>';
   }
 
 }
@@ -177,17 +197,17 @@ function addMessage(htmlId,text){
 
 
 export function pubDicRead() {
-const db = getDatabase();
+  const db = getDatabase();
   const starCountRef = ref(db, `pubdic`);
   onValue(starCountRef, (snapshot) => {
     snapshot.forEach(
-      function(ChildSnapShot){
-        let obj = new txt(ChildSnapShot.val().msg,ChildSnapShot.val().user,ChildSnapShot.val().timew);
+      function (ChildSnapShot) {
+        let obj = new txt(ChildSnapShot.val().msg, ChildSnapShot.val().user, ChildSnapShot.val().timew);
         //alert(obj.user);\
-        addMessage(sessionStorage.getItem('targetElementId'),obj);
+        addMessage(sessionStorage.getItem('targetElementId'), obj);
       }
     )
-  
+
   });
 
 
@@ -197,12 +217,12 @@ const db = getDatabase();
 }
 
 function getCnt() {
-  
+
   const db = getDatabase();
   const starCountRef = ref(db, `pubdic/0/totalmsg`);
   onValue(starCountRef, (snapshot) => {
-    sessionStorage.setItem('totalMsg',snapshot.val())
-  
+    sessionStorage.setItem('totalMsg', snapshot.val())
+
   });
   //alert(sessionStorage.getItem('totalMsg'));
   return parseInt(sessionStorage.getItem('totalMsg'));
