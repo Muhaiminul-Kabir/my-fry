@@ -151,7 +151,7 @@ export function pubDicWrite(umsg, utime) {
 
 export function pubDicRead() {
 const db = getDatabase();
-  const starCountRef = ref(db, `pubdic/0/totalmsg`);
+  const starCountRef = ref(db, `pubdic`);
   onValue(starCountRef, (snapshot) => {
     snapshot.forEach(
       function(ChildSnapShot){
