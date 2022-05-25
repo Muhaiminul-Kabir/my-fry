@@ -99,6 +99,7 @@ body {
 }
 
 .s2p {
+    float: left;
     height: 50%;
     overflow-y: scroll;
     transform: rotateX(180deg);
