@@ -58,7 +58,7 @@ body {
 }
 
 .s2{
-    width: 50%;
+    width: 30%;
     float: left;
     
 
@@ -116,7 +116,6 @@ body {
 .s2p {
     
     height: 50%;
-    width:50%;
     overflow-y: scroll;
     transform: rotateX(180deg);
     -moz-transform: rotateX(180deg);
