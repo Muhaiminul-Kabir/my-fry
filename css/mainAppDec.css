@@ -2,8 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:wght@700&family=Titillium+Web:wght@200&display=swap');
 
 
-body {
 
+
+body {
+    overflow: overlay;
     background-color: #54615f;
     background-attachment: fixed;
     background-repeat: no-repeat;
