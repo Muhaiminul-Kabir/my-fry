@@ -116,6 +116,7 @@ body {
 .s2p {
     
     height: 50%;
+    width:100%;
     overflow-y: scroll;
     transform: rotateX(180deg);
     -moz-transform: rotateX(180deg);
