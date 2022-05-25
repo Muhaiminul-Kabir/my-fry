@@ -151,9 +151,17 @@ export function pubDicWrite(umsg, utime) {
 
 
 function addMessage(htmlId,text){
-  document.getElementById(sessionStorage.getItem('targetElementId')).innerHTML += '<p style="color:#66ff00;font-weight: bold;;font-size:18px">['+text.user+']</p><p style="max-width:200px;word-wrap:break-word;">'
+  var user = sessionStorage.getItem('currentUser');
+  if(text.user == user){
+    document.getElementById(sessionStorage.getItem('targetElementId')).innerHTML += '<p style="color:#66ff00;font-weight: bold;;font-size:18px">['+text.user+']</p><p style="max-width:200px;word-wrap:break-word;">'
                 + text.msg+'<br><p style="font-size:12px">'+text.time+"</p></br>"
                 + '</p>';
+  }else{
+    document.getElementById(sessionStorage.getItem('targetElementId')).innerHTML += '<p style="color:#FF160C;font-weight: bold;;font-size:18px">['+text.user+']</p><p style="max-width:200px;word-wrap:break-word;">'
+                + text.msg+'<br><p style="font-size:12px">'+text.time+"</p></br>"
+                + '</p>';
+  }
+
 }
 
 

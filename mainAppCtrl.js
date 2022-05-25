@@ -2,15 +2,18 @@ import { pubDicRead,pubDicWrite } from "./server.js";
 import {startWorker } from "./factory.js";
 
 
+document.getElementById('refresh-btn').onclick = function () {
+        document.getElementById('chat-win').innerHTML = "";
+       
+        pubDicRead();
+}
 
-$(document).ready(function () {
-        startWorker();
- });
 
 
 
 document.getElementById('sent-btn').onclick = function () {
-       pubDicRead();
+        document.getElementById('chat-win').innerHTML = "";
+        pubDicRead();
         sessionStorage.setItem('targetElementId','chat-win');
         var user = sessionStorage.getItem("currentUser");
         var time = new Date();
