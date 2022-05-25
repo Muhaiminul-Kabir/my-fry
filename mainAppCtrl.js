@@ -1,14 +1,15 @@
 import { pubDicRead,pubDicWrite } from "./server.js";
 
-
+$(document).ready(function () {
+        load();
+    });
 
 
 
 
 
 document.getElementById('sent-btn').onclick = function () {
-        document.getElementById('chat-win').innerHTML = "";
-        pubDicRead();
+       
         sessionStorage.setItem('targetElementId','chat-win');
         var user = sessionStorage.getItem("currentUser");
         var time = new Date();
@@ -17,16 +18,12 @@ document.getElementById('sent-btn').onclick = function () {
                 + document.getElementById('msg').value+'<br><p style="font-size:12px">'+time+"</p></br>"
                 + '</p>';*/
         pubDicWrite(document.getElementById('msg').value,new Date());
+         document.getElementById('chat-win').innerHTML = "";
+        pubDicRead();
 };
 
-
-
-document.getElementById('refresh-btn').onclick = function () {
+function load(){
         document.getElementById('chat-win').innerHTML = "";
-       
         pubDicRead();
 }
-
-
-
 
