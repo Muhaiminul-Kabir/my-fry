@@ -44,7 +44,7 @@ function activeUser(user) {
   const db = getDatabase();
 
   set(ref(db, 'online/' + user), {
-    online: 1
+    online: user
 
   });
 
@@ -54,12 +54,12 @@ function activeUser(user) {
 
 function addActiveUsers(target, user) {
 
-  document.getElementById(target).innerHTML = "<p>" + user + "</p>";
+  document.getElementById(target).innerHTML += "<p>" + user + "</p>";
 }
 
 export function activeRead(list) {
   const db = getDatabase();
-  const starCountRef = ref(db, `online`);
+  const starCountRef = ref(db, 'online');
   onValue(starCountRef, (snapshot) => {
     snapshot.forEach(
       function (ChildSnapShot) {
