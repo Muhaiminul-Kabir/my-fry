@@ -50,6 +50,10 @@ body {
     border-bottom: solid 3px #03fcc6;
 
 }
+.pubdic{
+    width:50%;
+
+}
 
 #chat-win {
     color: white;
@@ -115,4 +119,5 @@ body {
 }
 .scnd{
     margin-top: 0;
+    width:50%;
 }
