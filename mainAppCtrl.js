@@ -2,11 +2,6 @@ import { pubDicRead,pubDicWrite } from "./server.js";
 
 
 
-document.getElementById('refresh-btn').onclick = function () {
-        document.getElementById('chat-win').innerHTML = "";
-       
-        pubDicRead();
-}
 
 
 
@@ -23,6 +18,14 @@ document.getElementById('sent-btn').onclick = function () {
                 + '</p>';*/
         pubDicWrite(document.getElementById('msg').value,new Date());
 };
+
+
+
+document.getElementById('refresh-btn').onclick = function () {
+        document.getElementById('chat-win').innerHTML = "";
+       
+        pubDicRead();
+}
 
 
 
