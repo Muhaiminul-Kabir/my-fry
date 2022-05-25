@@ -137,13 +137,14 @@ export function pubDicWrite(umsg, utime) {
     msg: umsg,
     timw: utime,
     user: sessionStorage.getItem("currentUser")
-  });
-  set(ref(db, 'pubcnt'), {
+  },
+  ref(db, 'pubcnt'), {
 
 
     val: msgcnt
 
   });
+
 }
 
 export function pubDicRead() {
