@@ -162,6 +162,6 @@ function getCnt() {
   
   });
   alert(sessionStorage.getItem('totalMsg'));
-  return sessionStorage.getItem('totalMsg');
+  return parseInt(sessionStorage.getItem('totalMsg'));
 
 }
