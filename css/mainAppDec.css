@@ -87,8 +87,8 @@ body {
 
 #onlist {
     color: #FFEB2A;
-    margin-top: 0;
-    float: left;
+   
+    
     font-size: 18px;
     transform: rotateX(180deg);
     -moz-transform: rotateX(180deg);
@@ -102,7 +102,7 @@ body {
 }
 
 .s2p {
-    
+    float: left;
     height: 50%;
     overflow-y: scroll;
     transform: rotateX(180deg);
