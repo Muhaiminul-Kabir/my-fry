@@ -52,6 +52,11 @@ body {
 }
 
 
+
+.s2{
+    float: left;
+}
+
 #chat-win {
     color: white;
 
@@ -102,7 +107,7 @@ body {
 }
 
 .s2p {
-    float: left;
+    
     height: 50%;
     overflow-y: scroll;
     transform: rotateX(180deg);
