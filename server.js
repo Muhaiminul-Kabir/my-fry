@@ -43,8 +43,8 @@ function activeUser(user){
   
   const db = getDatabase();
 
-  set(ref(db, 'online'), {
-    user
+  set(ref(db, 'online/'+user), {
+    
     
   });
 }
