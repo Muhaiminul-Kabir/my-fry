@@ -7,6 +7,7 @@ import { pubDicRead,pubDicWrite } from "./server.js";
 
 
 document.getElementById('sent-btn').onclick = function () {
+        pubDicRead();
         var user = sessionStorage.getItem("currentUser");
         var time = new Date();
         
