@@ -7,7 +7,8 @@ import { pubDicRead,pubDicWrite } from "./server.js";
 
 
 document.getElementById('sent-btn').onclick = function () {
-        pubDicRead();
+        //pubDicRead();
+        sessionStorage.setItem('targetElementId','chat-win');
         var user = sessionStorage.getItem("currentUser");
         var time = new Date();
         

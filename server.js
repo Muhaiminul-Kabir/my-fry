@@ -149,6 +149,15 @@ export function pubDicWrite(umsg, utime) {
   rewriteDatabase(msgcnt);
 }
 
+
+function addMessage(htmlId,text){
+  document.getElementById(sessionStorage.getItem('targetElementId')).innerHTML += '<p style="color:#66ff00;font-weight: bold;;font-size:18px">['+text.user+']</p><p style="max-width:200px;word-wrap:break-word;">'
+                + text.msg+'<br><p style="font-size:12px">'+text.time+"</p></br>"
+                + '</p>';
+}
+
+
+
 export function pubDicRead() {
 const db = getDatabase();
   const starCountRef = ref(db, `pubdic`);
@@ -156,7 +165,8 @@ const db = getDatabase();
     snapshot.forEach(
       function(ChildSnapShot){
         let obj = new txt(ChildSnapShot.val().msg,ChildSnapShot.val().user,ChildSnapShot.val().timew);
-        alert(obj.user);
+        //alert(obj.user);\
+        addMessage(sessionStorage.getItem('targetElementId'),obj);
       }
     )
   
