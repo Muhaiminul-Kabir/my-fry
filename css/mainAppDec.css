@@ -87,6 +87,7 @@ body {
 
 #onlist {
     color: #FFEB2A;
+    margin-top: 0;
     float: left;
     font-size: 18px;
     transform: rotateX(180deg);
