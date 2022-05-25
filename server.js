@@ -156,7 +156,7 @@ export function pubDicRead() {
 function getCnt() {
   var cnt = 0 ;
   const db = getDatabase();
-  const starCountRef = ref(db, 'pubdic/0/totalmsg');
+  const starCountRef = ref(db, `pubdic/0/totalmsg`);
   onValue(starCountRef, (snapshot) => {
     cnt = snapshot.val();
   
