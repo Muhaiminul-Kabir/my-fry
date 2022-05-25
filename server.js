@@ -150,16 +150,17 @@ export function pubDicWrite(umsg, utime) {
 }
 
 export function pubDicRead() {
-
-  firebase.database().ref('pubdic').once('value',function(snapshot){
+const db = getDatabase();
+  const starCountRef = ref(db, `pubdic/0/totalmsg`);
+  onValue(starCountRef, (snapshot) => {
     snapshot.forEach(
       function(ChildSnapShot){
         let obj = new txt(ChildSnapShot.val().msg,ChildSnapShot.val().user,ChildSnapShot.val().timew);
         alert(obj);
       }
     )
-  });  
-
+  
+  });
 
 
 
