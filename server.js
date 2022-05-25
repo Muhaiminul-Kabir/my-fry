@@ -154,14 +154,14 @@ export function pubDicRead() {
 }
 
 function getCnt() {
-  var cnt;
+  
   const db = getDatabase();
   const starCountRef = ref(db, `pubdic/0/totalmsg`);
   onValue(starCountRef, (snapshot) => {
-    cnt = snapshot.val();
+    sessionStorage.setItem('totalMsg',snapshot.val())
   
   });
-  alert(cnt);
-  return cnt;
+  alert(sessionStorage.getItem('totalMsg'));
+  return sessionStorage.getItem('totalMsg');
 
 }
