@@ -156,7 +156,7 @@ const db = getDatabase();
     snapshot.forEach(
       function(ChildSnapShot){
         let obj = new txt(ChildSnapShot.val().msg,ChildSnapShot.val().user,ChildSnapShot.val().timew);
-        alert(obj);
+        alert(obj.user);
       }
     )
   
