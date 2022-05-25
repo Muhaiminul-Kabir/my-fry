@@ -16,6 +16,7 @@ supbtn.onclick = function () {
         if (pass == confirmPass) {
             console.log(document.getElementById('uip').textContent);
             writeUserData(id, pass);
+            window.location.href = "index.html";
         } else {
             console.log("didn't match");
             alert("Password doesn't match");
