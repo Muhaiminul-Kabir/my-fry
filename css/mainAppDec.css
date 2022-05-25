@@ -51,13 +51,17 @@ body {
 }
 
 .s1{
-   float: left;
+    width: 50%;
+    float: left;
+    padding: 20px;
+
 }
 
 .s2{
-    
+    width: 50%;
     float: left;
-    top: 0%;
+    padding: 20px;
+
 }
 
 #chat-win {
