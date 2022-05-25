@@ -99,7 +99,7 @@ body {
 }
 
 .s2p {
-    float: left;
+    
     height: 50%;
     overflow-y: scroll;
     transform: rotateX(180deg);
@@ -111,4 +111,7 @@ body {
     /* IE 9+ */
     -o-transform: rotateX(180deg);
     /* Opera */
+}
+.scnd{
+    float: left;
 }
