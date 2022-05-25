@@ -63,7 +63,7 @@ export function activeRead(list) {
   onValue(starCountRef, (snapshot) => {
     snapshot.forEach(
       function (ChildSnapShot) {
-        addActiveUsers(list, ChildSnapShot.user);
+        addActiveUsers(list, ChildSnapShot.val().user);
       }
     )
 
