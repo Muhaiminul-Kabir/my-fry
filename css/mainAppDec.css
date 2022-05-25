@@ -85,7 +85,7 @@ body {
 
 #onlist {
     color: #FFEB2A;
-
+    float: left;
     font-size: 18px;
     transform: rotateX(180deg);
     -moz-transform: rotateX(180deg);
@@ -113,5 +113,5 @@ body {
     /* Opera */
 }
 .scnd{
-    float: left;
+    
 }
