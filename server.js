@@ -124,7 +124,14 @@ export function validate(uid) {
 
 
 */
+function rewriteDatabase(msgcnt){
+  const db = getDatabase();
+  set(ref(db, 'pubdic/0'), {
 
+   
+    totalmsg: msgcnt
+  });
+}
 
 export function pubDicWrite(umsg, utime) {
  //test
@@ -139,7 +146,7 @@ export function pubDicWrite(umsg, utime) {
     user: sessionStorage.getItem("currentUser"),
     totalmsg: msgcnt+1
   });
-
+  rewriteDatabase(msgcnt);
 }
 
 export function pubDicRead() {
@@ -149,7 +156,7 @@ export function pubDicRead() {
 function getCnt() {
   var cnt = 0 ;
   const db = getDatabase();
-  const starCountRef = ref(db, 'pubdic/1/totalmsg');
+  const starCountRef = ref(db, 'pubdic/0/totalmsg');
   onValue(starCountRef, (snapshot) => {
     cnt = snapshot.val();
   
