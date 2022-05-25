@@ -10,7 +10,9 @@ body {
     background-size: cover;
 }
 
-
+.main{
+    position: relative;
+}
 .input {
     text-shadow: 2px 2px 4px #000000;
     font-family: 'Bebas Neue', cursive;
@@ -51,9 +53,12 @@ body {
 
 }
 
-
+.s1{
+    position: absolute;
+}
 
 .s2{
+    position: absolute;
     float: right;
     top: 0%;
 }
