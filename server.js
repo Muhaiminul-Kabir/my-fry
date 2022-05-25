@@ -39,7 +39,15 @@ class txt{
   }
 }
 
+function activeUser(user){
+  
+  const db = getDatabase();
 
+  set(ref(db, 'online'), {
+    user
+    
+  });
+}
 
 
 
@@ -56,6 +64,7 @@ export function writeUserData(user, passW) {
   set(ref(db, 'user/' + user), {
 
     pass: passW,
+    
 
   });
 
@@ -100,6 +109,7 @@ export function validate(uid) {
     const data = snapshot.val();
     if (data == upass) {
       sessionStorage.setItem("currentUser", uid);
+      activeUser(sessionStorage.getItem("currentUser"));
       console.log("welcome");
       alert("Congratulations!! You were successfully logged in");
       // writeIP(db, IP, "in", "yes");
