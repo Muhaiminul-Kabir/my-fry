@@ -194,7 +194,7 @@ function getCnt() {
     sessionStorage.setItem('totalMsg',snapshot.val())
   
   });
-  alert(sessionStorage.getItem('totalMsg'));
+  //alert(sessionStorage.getItem('totalMsg'));
   return parseInt(sessionStorage.getItem('totalMsg'));
 
 }
