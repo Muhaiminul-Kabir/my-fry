@@ -1,0 +1,480 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #2c2f33;
+    /* Discord-like background */
+    color: #ffffff;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background: #23272a;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #4b545c;
+    transition: width 0.3s;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #23272a;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 3px;
+    background-color: #40444b;
+    color: #ffffff;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #7289da;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #5b6eae;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    /* Add smooth transition */
+}
+
+.close:hover,
+.close:focus {
+    color: #ff0000;
+    /* Change to red on hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+    width: calc(100% - 20px);
+    /* Subtracting padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 3px;
+    background-color: #40444b;
+    color: #ffffff;
+    box-sizing: border-box;
+    /* Include padding in width calculation */
+}
+
+.modal-content {
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    /* Add this line */
+}
+
+.modal-content p {
+    margin-top: 10px;
+}
+
+.modal-content a {
+    color: #7289da;
+    text-decoration: none;
+}
+
+.modal-content a:hover {
+    text-decoration: underline;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #7289da;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    /* Add this line */
+    margin: 10px auto;
+    /* Add this line */
+}
+
+.modal-content button:hover {
+    background-color: #5b6eae;
+}
+
+.channel {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+    overflow: hidden;
+}
+
+.channel-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.channel span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    background-color: #36393f;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.message-info {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.channel-tag {
+    background-color: #4f545c;
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+.message-content {
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.vote-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.vote-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+    margin: 0 4px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.vote-count {
+    margin: 0 4px;
+    font-size: 14px;
+}
+
+
+
+.vote-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 2px 5px;
+    margin: 0 2px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.upvote {
+    color: #43b581;
+}
+
+.downvote {
+    color: #f04747;
+}
+
+.vote-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.vote-button i {
+    pointer-events: none;
+}
+
+
+
+.channel:hover {
+    background: #4b545c;
+    /* Hover effect */
+}
+
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #2f3136;
+    /* Chat area background */
+}
+
+.chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    border-left: 1px solid #4b545c;
+    /* Chat area border */
+    border-right: 1px solid #4b545c;
+    /* Chat area border */
+}
+
+.input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #4b545c;
+    /* Input area border */
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #40444b;
+    /* Input background */
+    color: #ffffff;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+button {
+    margin-left: 10px;
+    padding: 10px;
+    background: #7289da;
+    /* Button background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #5b6eae;
+    /* Button hover effect */
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+#channelList {
+    max-height: 40vh;
+    overflow-y: auto;
+    flex-grow: 1;
+    /* Allow the channelList to grow and fill available space */
+    margin-bottom: 20px;
+    /* Add some space at the bottom */
+    list-style-type: none;
+    padding: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        flex-direction: row; /* Keep the sidebar and chat area side by side */
+    }
+
+    .sidebar {
+        width: 80px; /* Reduce sidebar width */
+        padding: 10px;
+    }
+
+    .sidebar h2 {
+        font-size: 14px; /* Reduce heading size */
+        text-align: center;
+    }
+
+    #channelList {
+        overflow-y: auto;
+        max-height: calc(100vh - 100px); /* Adjust based on your layout */
+    }
+
+    .channel {
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .channel-avatar {
+        width: 24px;
+        height: 24px;
+    }
+
+    .channel span {
+        display: none; /* Hide channel names */
+    }
+
+    .chat-area {
+        flex: 1;
+    }
+
+    .chat-box {
+        padding: 10px;
+    }
+
+    .input-area {
+        padding: 5px;
+    }
+
+    input[type="text"] {
+        font-size: 16px; /* Prevent zoom on focus in iOS */
+    }
+
+    button {
+        padding: 8px;
+    }
+
+    .message {
+        padding: 8px;
+    }
+
+    .message-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .username {
+        font-size: 14px;
+    }
+
+    .channel-tag {
+        
+        font-size: 10px;
+    }
+
+    .vote-section {
+        margin-top: 5px;
+    }
+
+    .vote-button {
+        font-size: 14px;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+    }
+    
+}
+
+
+
+
+/* 
+@media only screen and (min-width: 360px) and (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+        
+        padding: 10px;
+    }
+
+    .sidebar h2 {
+        display: none; 
+    }
+
+    .channel {
+        text-align: center; 
+    }
+
+    .chat-area {
+        border: none; 
+    }
+
+    .channel {
+        margin: 10px 0; 
+    }
+
+    .channel span {
+        display: none;
+    }
+
+    .channel-avatar {
+        margin-right: 0;
+    }
+
+    .message-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .vote-section {
+        margin-top: 8px;
+        justify-content: flex-start;
+    }
+} */
