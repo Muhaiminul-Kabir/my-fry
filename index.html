@@ -38,9 +38,9 @@
     <div class="container">
         <div class="sidebar">
             <h2>Channels</h2>
-            <div class="channel" onclick="changeChannel('General')"># General</div>
-            <div class="channel" onclick="changeChannel('Random')"># Random</div>
-            <div class="channel" onclick="changeChannel('Help')"># Help</div>
+            <div class="channel" style="color: greenyellow;">General</div>
+            <div class="channel" style="color: greenyellow;">Random</div>
+            <div class="channel" style="color: greenyellow;">Help</div>
             <div id="dvider">============</div>
             <ul id="channelList">
                 <li class="channel">
@@ -93,6 +93,17 @@
                 </li>
             </ul>
             <div>============</div>
+            <button id="addChannelBtn">Add Channel</button>
+
+            <div id="addChannelModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Add New Channel</h2>
+                    <input type="text" id="newChannelName" placeholder="Enter channel name">
+                    <input type="password" id="newChannelPassword" placeholder="Enter channel password">
+                    <button id="createChannelBtn">Create Channel</button>
+                </div>
+            </div>
 
         </div>
         <div class="chat-area">

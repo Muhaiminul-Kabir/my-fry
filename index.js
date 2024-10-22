@@ -1,5 +1,5 @@
 let username = 'Guest'; // Default username
-let currentChannel = 'General'; // Default channel
+let currentChannel = sessionStorage.currentChannel; // Default channel
 let users = {}; // Object to store user credentials
 
 
@@ -112,10 +112,10 @@ function insertBrTag(textarea) {
     const textBeforeCursor = textarea.value.substring(0, cursorPosition);
     const textAfterCursor = textarea.value.substring(cursorPosition);
 
-    textarea.value = textBeforeCursor + '</br>' + textAfterCursor;
+    textarea.value = textBeforeCursor + '<nextline>' + textAfterCursor;
 
     // Move cursor after the inserted <br>
-    textarea.selectionStart = textarea.selectionEnd = cursorPosition + 6;
+    textarea.selectionStart = textarea.selectionEnd = cursorPosition + 11;
 
     // Trigger input event to resize textarea
     textarea.dispatchEvent(new Event('input'));
@@ -135,7 +135,7 @@ function sendMessage() {
     messageElement.classList.add('message');
 
     // Replace <br> with actual line breaks for display
-    const messageContent = messageInput.value.replace(/<br>/g, '\n');
+    const messageContent = messageInput.value.replace(/<nextline>/g, '</br>');
 
     messageElement.innerHTML = `
     <div class="message-header">
@@ -194,3 +194,74 @@ function changeChannel(channel) {
     messageElement.innerHTML = `<span class="username">Welcome to ${channel} channel!</span></br></br></br>`;
     document.getElementById('chat-box').appendChild(messageElement);
 }
+
+
+function onDivClick(event) {
+    const clickedDiv = event.target;  // The clicked div element
+
+    // Get the ID and name of the clicked div
+    const divId = clickedDiv.id;
+    const divName = clickedDiv.innerHTML;
+
+    changeChannel(divName);
+}
+
+// Attach the click event listener to all divs when the DOM is loaded
+document.addEventListener("DOMContentLoaded", function() {
+    const divs = document.querySelectorAll('.channel');
+    divs.forEach(div => {
+        div.addEventListener('click', onDivClick);
+    });
+});
+
+
+// Get the add channel button and modal
+const addChannelBtn = document.getElementById('addChannelBtn');
+const addChannelModal = document.getElementById('addChannelModal');
+
+// Get the <span> element that closes the modal
+const addChannelSpan = addChannelModal.getElementsByClassName('close')[0];
+
+// When the user clicks on the button, open the modal
+addChannelBtn.onclick = function() {
+    addChannelModal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+addChannelSpan.onclick = function() {
+    addChannelModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == addChannelModal) {
+        addChannelModal.style.display = "none";
+    }
+}
+
+// Function to create a new channel
+function createNewChannel() {
+    const newChannelName = document.getElementById('newChannelName').value;
+    const newChannelPassword = document.getElementById('newChannelPassword').value;
+    
+    if (newChannelName && newChannelPassword) {
+        // Here you would typically send this data to your server
+        // For this example, we'll just add it to the channel list
+        const channelList = document.getElementById('channelList');
+        const newChannel = document.createElement('li');
+        newChannel.className = 'channel';
+        newChannel.innerHTML = `
+            <img src="https://via.placeholder.com/32" alt="${newChannelName} avatar" class="channel-avatar">
+            <span>${newChannelName}</span>
+        `;
+        channelList.appendChild(newChannel);
+        
+        // Close the modal and clear the inputs
+        addChannelModal.style.display = "none";
+        document. getElementById('newChannelName').value = '';
+        document.getElementById('newChannelPassword').value = '';
+    }
+}
+
+// Add event listener to the create channel button
+document.getElementById('createChannelBtn').addEventListener('click', createNewChannel);
