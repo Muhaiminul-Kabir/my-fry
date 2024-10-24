@@ -4,6 +4,113 @@ let users = {}; // Object to store user credentials
 
 
 
+
+
+
+document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+        document.querySelector(".container").style.filter = "blur(8px)";
+
+        document.querySelector('#loginModal').style.display = 'block';
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.querySelector("#loginButton");
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        document.getElementById('loginModal').style.display = "none";
+        document.querySelector(".container").style.filter = "blur(0px)";
+
+    }
+}
+
+function replaceURLWithHTMLLinks(text) {
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    return text.replace(exp, "<a href='$1' target='_blank'>$1</a>");
+}
+
+document.getElementById("message").addEventListener("input", function () {
+    var inputText = this.value;
+    var outputText = replaceURLWithHTMLLinks(inputText);
+    document.getElementById("message").innerHTML = outputText;
+});
+
+
+
+
+
+// API for get requests
+let fetchRes = fetch(
+    "http://bay-imports.gl.at.ply.gg:33702/cloudvendor");
+
+// FetchRes is the promise to resolve
+// it by using.then() method
+fetchRes.then(res =>
+    res.json()).then(d => {
+        console.log(d)
+    })
+
+
+
+
+// Get all channel elements
+const channels = document.querySelectorAll('#customChannel');
+const supers =  document.querySelectorAll('#super');
+const channelPasswordModal = document.getElementById('channelPasswordModal');
+const enterChannelBtn = document.getElementById('enterChannelBtn');
+localStorage.chIn = "1in";
+// Add click event listener to each channel
+channels.forEach(channel => {
+    channel.addEventListener('click', function () {
+        channelPasswordModal.style.display = 'block';
+        document.querySelector(".chat-area").style.filter = "blur(8px)";
+        document.querySelector(".container").style.pointerEvents = "none";
+    });
+});
+
+
+supers.forEach(superC => {
+    superC.addEventListener('click', () =>{
+        alert("here");
+        
+        document.querySelector(".chat-area").style.filter = "blur(0px)";
+        document.querySelector(".chat-area").style.pointerEvents = "auto";
+    });
+});
+
+// Close modal when clicking the close button
+channelPasswordModal.querySelector('.close').addEventListener('click', function () {
+    channelPasswordModal.style.display = 'none';
+    if (localStorage.chIn != "in") {
+        document.querySelector(".container").style.pointerEvents = "auto";
+        document.querySelector(".chat-area").style.pointerEvents = "none";
+    } else {
+        document.querySelector(".chat-area").style.filter = "blur(0px)";
+        document.querySelector(".container").style.pointerEvents = "auto";
+    }
+
+});
+
+// Handle Enter button click
+enterChannelBtn.addEventListener('click', function () {
+    const password = document.getElementById('channelPasswordInput').value;
+    // Add your password verification logic here
+
+    // Clear the password input
+    document.getElementById('channelPasswordInput').value = '';
+    if (localStorage.chIn != "in") {
+        document.querySelector(".container").style.pointerEvents = "auto";
+        document.querySelector(".chat-area").style.pointerEvents = "none";
+    } else {
+        document.querySelector(".chat-area").style.filter = "blur(0px)";
+        document.querySelector(".container").style.pointerEvents = "auto";
+    }
+    // Close the modal
+    channelPasswordModal.style.display = 'none';
+});
+
+
 function handleVote(button) {
     const voteSection = button.closest('.vote-section');
     const upvoteCount = voteSection.querySelector('.upvote-count');
@@ -130,6 +237,10 @@ function sendMessage() {
         return; // Ignore empty messages
     }
 
+    // Get current date and time
+    const now = new Date();
+    const timestamp = now.toLocaleString(); // Format: MM/DD/YYYY, HH:MM:SS AM/PM
+
     // Create a new message element
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
@@ -142,6 +253,7 @@ function sendMessage() {
         <div class="message-info">
             <span class="username" style="color:red;">${username}</span>
             <span class="channel-tag">${currentChannel}</span>
+            <span class="timestamp">${timestamp}</span>
         </div>
         <div class="vote-section">
             <button class="vote-button upvote"><i class="bi bi-hand-thumbs-up"></i></button>
@@ -201,13 +313,21 @@ function onDivClick(event) {
 
     // Get the ID and name of the clicked div
     const divId = clickedDiv.id;
-    const divName = clickedDiv.innerHTML;
 
-    changeChannel(divName);
+    if (divId == "customChannel") {
+
+        changeChannel(clickedDiv.querySelector("#cHandle").innerHTML);
+
+    } else {
+
+        changeChannel(clickedDiv.innerHTML);
+
+    }
+
 }
 
 // Attach the click event listener to all divs when the DOM is loaded
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const divs = document.querySelectorAll('.channel');
     divs.forEach(div => {
         div.addEventListener('click', onDivClick);
@@ -223,17 +343,17 @@ const addChannelModal = document.getElementById('addChannelModal');
 const addChannelSpan = addChannelModal.getElementsByClassName('close')[0];
 
 // When the user clicks on the button, open the modal
-addChannelBtn.onclick = function() {
+addChannelBtn.onclick = function () {
     addChannelModal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-addChannelSpan.onclick = function() {
+addChannelSpan.onclick = function () {
     addChannelModal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == addChannelModal) {
         addChannelModal.style.display = "none";
     }
@@ -243,7 +363,7 @@ window.onclick = function(event) {
 function createNewChannel() {
     const newChannelName = document.getElementById('newChannelName').value;
     const newChannelPassword = document.getElementById('newChannelPassword').value;
-    
+
     if (newChannelName && newChannelPassword) {
         // Here you would typically send this data to your server
         // For this example, we'll just add it to the channel list
@@ -255,13 +375,14 @@ function createNewChannel() {
             <span>${newChannelName}</span>
         `;
         channelList.appendChild(newChannel);
-        
+
         // Close the modal and clear the inputs
         addChannelModal.style.display = "none";
-        document. getElementById('newChannelName').value = '';
+        document.getElementById('newChannelName').value = '';
         document.getElementById('newChannelPassword').value = '';
     }
 }
 
 // Add event listener to the create channel button
 document.getElementById('createChannelBtn').addEventListener('click', createNewChannel);
+ 

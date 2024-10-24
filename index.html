@@ -10,17 +10,7 @@
     <title>Public Chat Room</title>
     <script defer>
 
-        window.onload = function () {
-            document.getElementById('loginModal').style.display = 'block';
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                document.getElementById('loginModal').style.display = "none";
-            }
-        }
+        
     </script>
 </head>
 
@@ -35,76 +25,41 @@
             <p>Don't have an account? <a href="#" onclick="showCreateAccount()">Create one</a></p>
         </div>
     </div>
+    <div id="addChannelModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Channel</h2>
+            <input type="text" id="newChannelName" placeholder="Enter channel name">
+            <input type="password" id="newChannelPassword" placeholder="Enter channel password">
+            <button id="createChannelBtn">Create Channel</button>
+        </div>
+    </div>
+    <div id="channelPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Enter Channel Password</h2>
+            <input type="password" id="channelPasswordInput" placeholder="Enter channel password">
+            <button id="enterChannelBtn">Enter</button>
+        </div>
+    </div>
     <div class="container">
         <div class="sidebar">
             <h2>Channels</h2>
-            <div class="channel" style="color: greenyellow;">General</div>
-            <div class="channel" style="color: greenyellow;">Random</div>
-            <div class="channel" style="color: greenyellow;">Help</div>
+            <div class="channel" id="super" style="color: greenyellow;">General</div>
+            <div class="channel" id="super" style="color: greenyellow;">Random</div>
+            <div class="channel" id="super" style="color: greenyellow;">Help</div>
             <div id="dvider">============</div>
             <ul id="channelList">
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 1 avatar" class="channel-avatar">
-                    <span>Channel 1</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 2 avatar" class="channel-avatar">
-                    <span>Channel 2</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 3 avatar" class="channel-avatar">
-                    <span>Channel 3</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 1 avatar" class="channel-avatar">
-                    <span>Channel 1</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 2 avatar" class="channel-avatar">
-                    <span>Channel 2</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 3 avatar" class="channel-avatar">
-                    <span>Channel 3</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 1 avatar" class="channel-avatar">
-                    <span>Channel 1</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 2 avatar" class="channel-avatar">
-                    <span>Channel 2</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 3 avatar" class="channel-avatar">
-                    <span>Channel 3</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 1 avatar" class="channel-avatar">
-                    <span>Channel 1</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 2 avatar" class="channel-avatar">
-                    <span>Channel 2</span>
-                </li>
-                <li class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 3 avatar" class="channel-avatar">
-                    <span>Channel 3</span>
+
+                <li id="customChannel" class="channel">
+                    <img src="https://via.placeholder.com/32" alt="Channel 3 avatar" class="channel-avatar" style="pointer-events: none;">
+                    <span id="cHandle">Channel 3</span>
                 </li>
             </ul>
             <div>============</div>
             <button id="addChannelBtn">Add Channel</button>
 
-            <div id="addChannelModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>Add New Channel</h2>
-                    <input type="text" id="newChannelName" placeholder="Enter channel name">
-                    <input type="password" id="newChannelPassword" placeholder="Enter channel password">
-                    <button id="createChannelBtn">Create Channel</button>
-                </div>
-            </div>
-
+            
         </div>
         <div class="chat-area">
             <div class="chat-box" id="chat-box">
@@ -116,6 +71,7 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="index.js"></script>
 </body>
