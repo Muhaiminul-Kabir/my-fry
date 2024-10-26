@@ -86,6 +86,7 @@ function test() {
     });
 
     const requestOptions = {
+        mode:"no-cors",
         method: "POST", 
         headers: myHeaders,
         body: raw,
