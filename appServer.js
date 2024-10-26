@@ -93,7 +93,7 @@ function test() {
         redirect: "follow"
     };
     console.log(requestOptions);
-    fetch("http://bay-imports.gl.at.ply.gg:33702/user/auth", requestOptions)
+    fetch("https://bay-imports.gl.at.ply.gg:33702/user/auth", requestOptions)
         .then((response) => response.text())
         .then((result) => console.log(result))
         .catch((error) => console.error(error));
