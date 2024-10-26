@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="styles.css">
 
     <title>Public Chat Room</title>
-    <script defer>
-
-        
-    </script>
+   
 </head>
 
 <body>
+
+    
+    <div id="notification" class="notification" style="display: none;">
+        Welcome <span id="usernameDisplay"></span>
+    </div>
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -58,6 +60,8 @@
             </ul>
             <div>============</div>
             <button id="addChannelBtn">Add Channel</button>
+            <button class="logoutBtn" id="addChannelBtn" style="background-color: red;">Logout</button>
+
 
             
         </div>
@@ -73,7 +77,9 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="index.js"></script>
+    <script src="controller.js"></script>
+    <script src="appServer.js"></script>
+
 </body>
 
 </html>

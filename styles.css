@@ -25,6 +25,8 @@ body {
     overflow-y: auto;
 }
 
+
+
 .sidebar h2 {
     color: #ffffff;
     margin-bottom: 20px;
@@ -248,7 +250,28 @@ body {
     font-size: 14px;
 }
 
+.logout-btn {
+    background-color: #f04747; /* Red color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
 
+.logout-btn:hover {
+    background-color: #d04545; /* Darker red on hover */
+}
+
+@media only screen and (max-width: 767px) {
+    .logout-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
 
 .vote-button {
     background: none;
@@ -403,6 +426,31 @@ button:hover {
 #createChannelBtn:hover {
     background-color: #3ca374;
 }
+
+
+
+
+
+
+.notification {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1000; /* Ensure it is above other content */
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+
+
+
 
 @media only screen and (max-width: 767px) {
     .container {

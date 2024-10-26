@@ -1,9 +1,25 @@
 let username = 'Guest'; // Default username
-let currentChannel = sessionStorage.currentChannel; // Default channel
+let currentChannel = "General"; // Default channel
 let users = {}; // Object to store user credentials
 
 
-
+// document.onkeydown = (e) => {
+//     if (e.key == 123) {
+//         e.preventDefault();
+//     }
+//     if (e.ctrlKey && e.shiftKey && e.key == 'I') {
+//         e.preventDefault();
+//     }
+//     if (e.ctrlKey && e.shiftKey && e.key == 'C') {
+//         e.preventDefault();
+//     }
+//     if (e.ctrlKey && e.shiftKey && e.key == 'J') {
+//         e.preventDefault();
+//     }
+//     if (e.ctrlKey && e.key == 'U') {
+//         e.preventDefault();
+//     }
+// };
 
 
 
@@ -14,15 +30,8 @@ document.onreadystatechange = function () {
         document.querySelector('#loginModal').style.display = 'block';
     }
 
-    // Get the <span> element that closes the modal
-    var span = document.querySelector("#loginButton");
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        document.getElementById('loginModal').style.display = "none";
-        document.querySelector(".container").style.filter = "blur(0px)";
 
-    }
 }
 
 function replaceURLWithHTMLLinks(text) {
@@ -40,23 +49,13 @@ document.getElementById("message").addEventListener("input", function () {
 
 
 
-// API for get requests
-let fetchRes = fetch(
-    "http://bay-imports.gl.at.ply.gg:33702/cloudvendor");
-
-// FetchRes is the promise to resolve
-// it by using.then() method
-fetchRes.then(res =>
-    res.json()).then(d => {
-        console.log(d)
-    })
 
 
 
 
 // Get all channel elements
 const channels = document.querySelectorAll('#customChannel');
-const supers =  document.querySelectorAll('#super');
+const supers = document.querySelectorAll('#super');
 const channelPasswordModal = document.getElementById('channelPasswordModal');
 const enterChannelBtn = document.getElementById('enterChannelBtn');
 localStorage.chIn = "1in";
@@ -71,9 +70,9 @@ channels.forEach(channel => {
 
 
 supers.forEach(superC => {
-    superC.addEventListener('click', () =>{
-        alert("here");
-        
+    superC.addEventListener('click', () => {
+        //alert("here");
+
         document.querySelector(".chat-area").style.filter = "blur(0px)";
         document.querySelector(".chat-area").style.pointerEvents = "auto";
     });
@@ -181,19 +180,60 @@ function createAccount() {
     }
 }
 
+
+function popUp(msg,color) {
+    const notification = document.getElementById('notification');
+    notification.style.backgroundColor = color;
+    notification.style.display = 'block'; // Show the notification
+    notification.innerHTML = msg; // Update the notification content
+    // Hide the notification after 3 seconds
+    setTimeout(() => {
+        notification.style.opacity = '0'; // Fade out
+        setTimeout(() => {
+            notification.style.display = 'none'; // Remove from view
+            notification.style.opacity = '1'; // Reset for next use
+        }, 500); // Wait for fade out to complete
+    }, 1750); // Show for 3 seconds
+}
+
+
+
 // Login function
 function login() {
     const usernameInput = document.getElementById('usernameInput');
-    if (usernameInput.value.trim() !== '') {
+    const passwordInput = document.getElementById('passwordInput');
+
+    if (usernameInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
         username = usernameInput.value.trim();
-        document.getElementById('loginModal').style.display = 'none';
-        // You can add a welcome message or any other initialization here
-        const chatBox = document.getElementById('chat-box');
-        const welcomeMessage = document.createElement('div');
-        welcomeMessage.innerHTML = `<span class="username">Welcome, ${username}!</span><br><br>`;
-        chatBox.appendChild(welcomeMessage);
+        password = passwordInput.value.trim();
+        const res = authModoule(username, password);
+
+        console.log(res);
+
+        if (res !== undefined && res.password === password) {
+            changeChannel(currentChannel);
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('loginModal').style.display = "none";
+            document.querySelector(".container").style.filter = "blur(0px)";
+            // You can add a welcome message or any other initialization here
+            const chatBox = document.getElementById('chat-box');
+            var welcomeMessage = `<span class="username">Welcome, ${username}!</span><br><br>`;
+
+            popUp(welcomeMessage,"green");
+        }else if(res.password !== password){
+            var errorMessage = `<span class="username">Password is incorrect!!</span><br><br>`;
+ 
+            popUp(welcomeMessage,"red");
+        }else if(res === undefined){
+            var errorMessage = `<span class="username">${username} is invalid!!</span><br><br>`;
+ 
+            popUp(errorMessage,"black");
+
+        }
+
+
     } else {
-        alert('Please enter a username');
+        popUp(`<span class="username">Please enter Username or Password!</span><br><br>`,"red");
     }
 }
 // Function to handle textarea input
@@ -385,4 +425,14 @@ function createNewChannel() {
 
 // Add event listener to the create channel button
 document.getElementById('createChannelBtn').addEventListener('click', createNewChannel);
- 
+
+
+const logoutBtn = document.querySelector(".logoutBtn");
+
+logoutBtn.addEventListener("click", () => {
+
+    localStorage.clear();
+    document.querySelector(".container").style.filter = "blur(8px)";
+    document.querySelector('#loginModal').style.display = 'block';
+
+});
