@@ -1,50 +1,42 @@
 
-
-function registerModoule(username, password) {
-    const data = {
-
-        "meta": "client",
-        "prop": {
-            "name": username,
-            "password": password
+function rawFactory(username, password) {
+    return {
+        meta: "client",
+        prop: {
+            name: username,
+            password: password
         }
     };
+}
 
-    const response = fetchData("http:localhost:8000/user/create", "POST", data)
+// axiosApi('http://localhost:9090/user/auth', 'post', rawFactory("Nirjon", "qwerty"))
+//     .then((e) => console.log(e.data));
 
-    return response;
+async function axiosApi(url, act, raw) {
+    return axios({
+        method: act,
+        url: url,
+        data: raw
+    });
+}
+ 
 
 
 
+register("Parvin","qwerty");
+async function register(username, password) {
+    const url = "http://localhost:9090/user/create";
+    const act = "post";
+    const raw = rawFactory(username, password);
+    const response = await axiosApi(url,act,raw);
+    const data = response.data;
+
+    console.log(data);
+
+    return data.status;
 
 }
 
-// alert(authModule("Nirjon", "qwerty").status)
-// function authModule(username, password) {
-
-//     let res;
-
-//     test(username, "")
-//         .then((result) => {
-//             console.log(result)
-//             if (result.password === "") {
-
-//                 console.log(23)
-//                 res = { "status": "null" };
-//             }
-
-//             if (result.password === password) {
-//                 console.log(23)
-//                 res = { "status": "ok" };
-//             } else if (result.password !== password) {
-//                 console.log(23)
-//                 res = { "status": "bad" };
-//             }
-//         });
-
-//         console.log(res);
-
-// }
 
 
 function sendModule(data) {
@@ -55,47 +47,29 @@ function sendModule(data) {
 
 async function auth(username, password) {
 
-    const myHeaders = {
-        "Content-Type": "application/json"
-    };
+   
 
-    const raw = {
-        meta: "client",
-        prop: {
-            name: username,
-            password: password
-        }
-    };
+    const url = "http://localhost:9090/user/auth";
+    const act = "post";
+    const raw = rawFactory(username, "");
+    const response = await axiosApi(url,act,raw);
+    const data = response.data;
 
 
-
-
-    const response = await axios({
-        method: 'post',
-        url: 'http://localhost:9090/user/auth',
-        data: raw
-    });
-
-
-    
-    console.log(response.data);
-    if (response.data.password === password) {
+    console.log(data);
+    if (data.password === password) {
         return "ok";
-    }else if(response.data.password!== undefined && response.data.password !== password){
+    } else if (data.password !== undefined && data.password !== password) {
         return "bad";
-    }else{
+    } else {
         return "invalid";
     }
 
-     
 
 
 
 
 
-}
-
-function axiosTest() {
 
 }
 

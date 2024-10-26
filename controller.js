@@ -164,17 +164,24 @@ function showLogin() {
 }
 
 // Create account function
-function createAccount() {
+async function createAccount() {
     const usernameInput = document.getElementById('usernameInput');
     const passwordInput = document.getElementById('passwordInput');
+
     if (usernameInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
-        if (users[usernameInput.value]) {
-            alert('Username already exists. Please choose another.');
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+        const response = await register(username, password);
+        if (response === "bad") {
+            popUp(`<span class="username">The username <span style="color:red;">${username}</span> is already exists!! Please <br><span style="color:cyan;">Login</span> instead</span><br><br>`, "black");
         } else {
             users[usernameInput.value] = passwordInput.value;
-            alert('Account created successfully. You can now log in.');
+            popUp(`<span class="username">Account created successfully!! You can Login now.</span><br><br>`, "green");
+
             showLogin();
         }
+
+
     } else {
         alert('Please enter both username and password');
     }
@@ -213,8 +220,8 @@ async function login() {
             var errorMessage = `<span class="username">The username <span style="color:red;">${username}</span> is invalid!!</span><br><br>`;
 
             popUp(errorMessage, "black");
-            
-        }else if (res === "ok") {
+
+        } else if (res === "ok") {
 
             changeChannel(currentChannel);
             document.getElementById('loginModal').style.display = 'none';
