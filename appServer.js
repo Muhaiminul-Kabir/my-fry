@@ -1,3 +1,5 @@
+
+
 function registerModoule(username, password) {
     const data = {
 
@@ -17,17 +19,32 @@ function registerModoule(username, password) {
 
 }
 
+// alert(authModule("Nirjon", "qwerty").status)
+// function authModule(username, password) {
 
-function authModoule(username, password) {
+//     let res;
 
-    const data = '{"meta":"client","prop":{"name":"dsfsdf","password":"fdsfdsf"}}';
+//     test(username, "")
+//         .then((result) => {
+//             console.log(result)
+//             if (result.password === "") {
 
-    const response = fetchData("http:localhost:8000/user/auth", "POST", data)
+//                 console.log(23)
+//                 res = { "status": "null" };
+//             }
 
-    return response;
+//             if (result.password === password) {
+//                 console.log(23)
+//                 res = { "status": "ok" };
+//             } else if (result.password !== password) {
+//                 console.log(23)
+//                 res = { "status": "bad" };
+//             }
+//         });
 
+//         console.log(res);
 
-}
+// }
 
 
 function sendModule(data) {
@@ -36,98 +53,49 @@ function sendModule(data) {
 
 
 
+async function auth(username, password) {
 
-async function create(blogPost) {
-    try {
-        // Create the URL
-        const url = 'http://localhost:8000/user/auth';
-
-        // Create the headers
-        const headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        };
-
-        // Create the POST body
-        const body = JSON.stringify(blogPost);
-        console.log(body);
-
-        // Send the POST request
-        const response = await fetch(url, { method: 'POST', headers, body });
-
-        // Check the response status
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        // Parse the JSON response
-        const data = await response.json();
-        console.log('Success:', data);
-    } catch (error) {
-        // Handle any errors
-        console.error('Error:', error);
-    }
-}
-
-
-test();
-
-function test() {
     const myHeaders = {
         "Content-Type": "application/json"
     };
 
-    const raw = JSON.stringify({
-        "meta": "client",
-        "prop": {
-            "name": "Nirjon",
-            "password": "qwerty"
+    const raw = {
+        meta: "client",
+        prop: {
+            name: username,
+            password: password
         }
+    };
+
+
+
+
+    const response = await axios({
+        method: 'post',
+        url: 'http://localhost:9090/user/auth',
+        data: raw
     });
 
-    const requestOptions = {
-        mode:"no-cors",
-        method: "POST", 
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow"
-    };
-    console.log(requestOptions);
-    fetch("https://bay-imports.gl.at.ply.gg:33702/user/auth", requestOptions)
-        .then((response) => response.text())
-        .then((result) => console.log(result))
-        .catch((error) => console.error(error));
+
+    
+    console.log(response.data);
+    if (response.data.password === password) {
+        return "ok";
+    }else if(response.data.password!== undefined && response.data.password !== password){
+        return "bad";
+    }else{
+        return "invalid";
+    }
+
+     
+
+
+
+
 
 }
 
-
-
-
-
-function fetchData(url, met, data) {
-
-    // data = JSON.parse(data);
-    // console.log(data)
-    const options = {
-        mode: "cors",
-        method: met, // Or 'POST', 'PUT', etc. depending on the API
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: data
-    };
-
-
-    let fetchRes = fetch(url, options);
-
-    // FetchRes is the promise to resolve
-    // it by using.then() method
-    fetchRes.then(res =>
-        res.json()).then(d => {
-            console.log(d);
-        });
-
-
+function axiosTest() {
 
 }
 

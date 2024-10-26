@@ -181,7 +181,7 @@ function createAccount() {
 }
 
 
-function popUp(msg,color) {
+function popUp(msg, color) {
     const notification = document.getElementById('notification');
     notification.style.backgroundColor = color;
     notification.style.display = 'block'; // Show the notification
@@ -199,18 +199,23 @@ function popUp(msg,color) {
 
 
 // Login function
-function login() {
+async function login() {
     const usernameInput = document.getElementById('usernameInput');
     const passwordInput = document.getElementById('passwordInput');
 
     if (usernameInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
         username = usernameInput.value.trim();
         password = passwordInput.value.trim();
-        const res = authModoule(username, password);
-
+        const res = await auth(username, password);
         console.log(res);
 
-        if (res !== undefined && res.password === password) {
+        if (res === "invalid") {
+            var errorMessage = `<span class="username">The username <span style="color:red;">${username}</span> is invalid!!</span><br><br>`;
+
+            popUp(errorMessage, "black");
+            
+        }else if (res === "ok") {
+
             changeChannel(currentChannel);
             document.getElementById('loginModal').style.display = 'none';
             document.getElementById('loginModal').style.display = "none";
@@ -218,22 +223,19 @@ function login() {
             // You can add a welcome message or any other initialization here
             const chatBox = document.getElementById('chat-box');
             var welcomeMessage = `<span class="username">Welcome, ${username}!</span><br><br>`;
-
-            popUp(welcomeMessage,"green");
-        }else if(res.password !== password){
+            localStorage.user = username;
+            popUp(welcomeMessage, "green");
+        } else {
             var errorMessage = `<span class="username">Password is incorrect!!</span><br><br>`;
- 
-            popUp(welcomeMessage,"red");
-        }else if(res === undefined){
-            var errorMessage = `<span class="username">${username} is invalid!!</span><br><br>`;
- 
-            popUp(errorMessage,"black");
 
+            popUp(errorMessage, "red");
         }
 
 
+
+
     } else {
-        popUp(`<span class="username">Please enter Username or Password!</span><br><br>`,"red");
+        popUp(`<span class="username">Please enter Username or Password!</span><br><br>`, "red");
     }
 }
 // Function to handle textarea input
