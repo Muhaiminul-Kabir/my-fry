@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="styles.css">
 
     <title>Public Chat Room</title>
-   
+
 </head>
 
 <body>
 
-    
+
     <div id="notification" class="notification" style="display: none;">
         Welcome <span id="usernameDisplay"></span>
     </div>
@@ -48,37 +48,44 @@
         <div class="sidebar">
             <h2>Channels</h2>
             <div class="channel" id="super" style="color: greenyellow;">General</div>
-            <div class="channel" id="super" style="color: greenyellow;">Random</div>
+            <div class="channel" id="super" style="color: greenyellow;">Photos</div>
             <div class="channel" id="super" style="color: greenyellow;">Help</div>
             <div id="dvider">============</div>
-            <ul id="channelList">
 
-                <li id="customChannel" class="channel">
-                    <img src="https://via.placeholder.com/32" alt="Channel 3 avatar" class="channel-avatar" style="pointer-events: none;">
+            <div id="channelList">
+               
+                <marquee direction="up" class="belt">
+
+                    Custom channel option will be added soon.<br> Enjoy other features for the time being.
+
+                </marquee>
+                <!-- <li id="customChannel" class="channel">
+                    <img src="https://via.placeholder.com/32" alt="Channel 3 avatar" class="channel-avatar"
+                        style="pointer-events: none;">
                     <span id="cHandle">Channel 3</span>
-                </li>
-            </ul>
-            <div>============</div>
-            <button id="addChannelBtn">Add Channel</button>
-            <button class="logoutBtn" id="addChannelBtn" style="background-color: red;">Logout</button>
+                </li> -->
+            </div>
+                <div>============</div>
+                <button id="addChannelBtn" style="visibility: hidden;">Add Channel</button>
+                <button class="logoutBtn" id="addChannelBtn" style="background-color: red;">Logout</button>
 
 
-            
-        </div>
-        <div class="chat-area">
-            <div class="chat-box" id="chat-box">
-                <!-- Chat messages will appear here -->
+
             </div>
-            <div class="input-area">
-                <input type="text" id="message" placeholder="Type your message..." />
-                <button onclick="sendMessage()">Send</button>
+            <div class="chat-area">
+                <div class="chat-box" id="chat-box">
+                    <!-- Chat messages will appear here -->
+                </div>
+                <div class="input-area">
+                    <input type="text" id="message" placeholder="Type your message..." />
+                    <button onclick="sendToGroupChat()">Send</button>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="controller.js"></script>
-    <script src="appServer.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="controller.js"></script>
+        <script src="appServer.js"></script>
 
 </body>
 

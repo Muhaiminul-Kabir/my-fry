@@ -267,6 +267,12 @@ body {
 }
 
 @media only screen and (max-width: 767px) {
+
+    .belt{
+        font-size: small;
+    }
+
+
     .logout-btn {
         padding: 8px;
         font-size: 14px;

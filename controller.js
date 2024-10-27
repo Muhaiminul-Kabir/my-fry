@@ -230,7 +230,10 @@ async function login() {
             // You can add a welcome message or any other initialization here
             const chatBox = document.getElementById('chat-box');
             var welcomeMessage = `<span class="username">Welcome, ${username}!</span><br><br>`;
-            localStorage.user = username;
+            sessionStorage.user = username;
+            if (username === "superadmin") {
+                localStorage.admin = "super";
+            }
             popUp(welcomeMessage, "green");
         } else {
             var errorMessage = `<span class="username">Password is incorrect!!</span><br><br>`;
@@ -278,13 +281,11 @@ function insertBrTag(textarea) {
 }
 
 // Function to send message
-function sendMessage() {
-    const messageInput = document.getElementById('message');
+function sendMessage(data) {
+
     const chatBox = document.getElementById('chat-box');
 
-    if (messageInput.value.trim() === '') {
-        return; // Ignore empty messages
-    }
+
 
     // Get current date and time
     const now = new Date();
@@ -295,12 +296,16 @@ function sendMessage() {
     messageElement.classList.add('message');
 
     // Replace <br> with actual line breaks for display
-    const messageContent = messageInput.value.replace(/<nextline>/g, '</br>');
+    const messageContent = data.replace(/<nextline>/g, '</br>');
+
+
+
+
 
     messageElement.innerHTML = `
     <div class="message-header">
         <div class="message-info">
-            <span class="username" style="color:red;">${username}</span>
+            <span class="username" style="color:green;">me</span>
             <span class="channel-tag">${currentChannel}</span>
             <span class="timestamp">${timestamp}</span>
         </div>
@@ -324,9 +329,12 @@ function sendMessage() {
 
     // Append the new message to the chat box
     chatBox.appendChild(messageElement);
+    const messageBox = document.querySelectorAll(".message");
+    if (sessionStorage.user === "superadmin") {
 
-    // Clear the input field
-    messageInput.value = '';
+        document.querySelector(".username").style.color = "purple";
+
+    }
 
     // Scroll to the bottom of the chat box
     chatBox.scrollTop = chatBox.scrollHeight;
@@ -349,7 +357,9 @@ function changeUsername() {
 
 // Function to change channel
 function changeChannel(channel) {
+    console.log(channel);
     currentChannel = channel;
+    connect(channel);
     document.getElementById('chat-box').innerHTML = ''; // Clear messages on channel change
     const messageElement = document.createElement('div');
     messageElement.innerHTML = `<span class="username">Welcome to ${channel} channel!</span></br></br></br>`;
@@ -440,7 +450,7 @@ const logoutBtn = document.querySelector(".logoutBtn");
 
 logoutBtn.addEventListener("click", () => {
 
-    localStorage.clear();
+    sessionStorage.clear();
     document.querySelector(".container").style.filter = "blur(8px)";
     document.querySelector('#loginModal').style.display = 'block';
 
