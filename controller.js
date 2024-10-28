@@ -1,7 +1,7 @@
 let username = 'Guest'; // Default username
 let currentChannel = "General"; // Default channel
 let users = {}; // Object to store user credentials
-
+let images = 0;
 
 // document.onkeydown = (e) => {
 //     if (e.key == 123) {
@@ -34,6 +34,176 @@ document.onreadystatechange = function () {
 
 }
 
+
+
+
+
+// image upload 
+document.addEventListener('DOMContentLoaded', function () {
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.sidebar');
+    const chatArea = document.querySelector('.chat-area');
+
+    sidebarToggle.addEventListener('click', function () {
+        sidebar.classList.toggle('collapsed');
+        chatArea.classList.toggle('expanded');
+
+        // Change toggle button icon
+        const icon = sidebarToggle.querySelector('i');
+        if (sidebar.classList.contains('collapsed')) {
+            icon.classList.remove('bi-list-nested');
+            icon.classList.add('bi-list');
+        } else {
+            icon.classList.remove('bi-list');
+            icon.classList.add('bi-list-nested');
+        }
+
+    });
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function (event) {
+        if (window.innerWidth <= 768) {
+            if (!sidebar.contains(event.target) &&
+                !sidebarToggle.contains(event.target) &&
+                !sidebar.classList.contains('collapsed')) {
+                sidebar.classList.add('collapsed');
+                chatArea.classList.add('expanded');
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+        }
+    });
+});
+
+
+
+setInterval(function () {
+    if (images < 1) {
+        document.getElementById('messageCard').classList.remove('show');
+        document.getElementById("avatarContainer").style.visibility = "hidden";
+
+    } else if (images > 0) {
+        messageCard.classList.add('show');
+        document.getElementById("avatarContainer").style.visibility = "visible";
+    }
+}, 12);
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('toggleCard');
+    const messageCard = document.getElementById('messageCard');
+
+    toggleBtn.addEventListener('click', function () {
+
+
+
+
+
+
+        if (toggleBtn.classList.contains('active')) {
+            toggleBtn.classList.remove('active');
+        } else {
+            toggleBtn.classList.toggle('active');
+        }
+        document.getElementById('imageUpload').click();
+        document.getElementById('toggleCard').blur();
+    });
+
+    // // Close card when clicking outside
+    // document.addEventListener('click', function (e) {
+    //     if (!messageCard.contains(e.target) && !toggleBtn.contains(e.target)) {
+    //         // messageCard.classList.remove('show');
+    //         toggleBtn.classList.remove('active');
+
+    //     }
+
+    // });
+});
+
+document.getElementById('imageUpload').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        images = images + 1;
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const avatarContainer = document.getElementById('avatarContainer');
+
+            // Create avatar card
+            const avatarCard = document.createElement('div');
+            avatarCard.classList.add('avatar-card');
+
+            // Create image element
+            const img = document.createElement('img');
+            img.src = e.target.result;
+
+            // Create delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.classList.add('delete-btn');
+            deleteBtn.innerText = 'x';
+            deleteBtn.onclick = function () {
+                avatarContainer.removeChild(avatarCard);
+                images = images - 1;
+            };
+
+            // Append elements
+            avatarCard.appendChild(img);
+            avatarCard.appendChild(deleteBtn);
+            avatarContainer.appendChild(avatarCard);
+
+            // Clear the file input
+            event.target.value = '';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+
+
+function generateImageHTML() {
+    const avatarContainer = document.getElementById('avatarContainer');
+    
+    let imageHTML = '<div class="message-images">'; // Start a new div for images
+
+    avatarContainer.querySelectorAll('img').forEach(img => {
+        imageHTML += `<img src="${img.src}" class="message-image" alt="Uploaded image">`;
+    });
+
+    imageHTML += '</div>'; // Close the images div
+
+    document.getElementById('avatarContainer').innerHTML = '';
+    images = 0;
+
+    return imageHTML;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// hyperlink
 function replaceURLWithHTMLLinks(text) {
     var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
     return text.replace(exp, "<a href='$1' target='_blank'>$1</a>");
@@ -53,7 +223,11 @@ document.getElementById("message").addEventListener("input", function () {
 
 
 
-// Get all channel elements
+
+
+
+
+// Channel
 const channels = document.querySelectorAll('#customChannel');
 const supers = document.querySelectorAll('#super');
 const channelPasswordModal = document.getElementById('channelPasswordModal');
@@ -206,15 +380,15 @@ function popUp(msg, color) {
 
 
 // Login function
-async function login() {
+async function login(res) {
     const usernameInput = document.getElementById('usernameInput');
     const passwordInput = document.getElementById('passwordInput');
 
     if (usernameInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
         username = usernameInput.value.trim();
         password = passwordInput.value.trim();
-        const res = await auth(username, password);
-        console.log(res);
+        // const res = await auth(username, password);
+        // console.log(res);
 
         if (res === "invalid") {
             var errorMessage = `<span class="username">The username <span style="color:red;">${username}</span> is invalid!!</span><br><br>`;
@@ -299,9 +473,6 @@ function sendMessage(data) {
     const messageContent = data.replace(/<nextline>/g, '</br>');
 
 
-
-
-
     messageElement.innerHTML = `
     <div class="message-header">
         <div class="message-info">
@@ -317,7 +488,15 @@ function sendMessage(data) {
         </div>
     </div>
     <div class="message-content">${messageContent}</div>
-    `;
+    <div class="message-images-container">
+        <div class="message-images">
+            ${generateImageHTML()}
+        </div>
+    </div>
+`;
+
+
+
 
     // Add event listeners to vote buttons
     const voteButtons = messageElement.querySelectorAll('.vote-button');
@@ -327,6 +506,7 @@ function sendMessage(data) {
         });
     });
 
+
     // Append the new message to the chat box
     chatBox.appendChild(messageElement);
     const messageBox = document.querySelectorAll(".message");
@@ -335,7 +515,7 @@ function sendMessage(data) {
         document.querySelector(".username").style.color = "purple";
 
     }
-
+    
     // Scroll to the bottom of the chat box
     chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -363,6 +543,7 @@ function changeChannel(channel) {
     document.getElementById('chat-box').innerHTML = ''; // Clear messages on channel change
     const messageElement = document.createElement('div');
     messageElement.innerHTML = `<span class="username">Welcome to ${channel} channel!</span></br></br></br>`;
+    messageElement.align = "center";
     document.getElementById('chat-box').appendChild(messageElement);
 }
 

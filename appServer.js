@@ -125,21 +125,26 @@ function getMessage(data) {
 
 
     messageElement.innerHTML = `
-  <div class="message-header">
-      <div class="message-info">
-          <span class="username" style="color:red;">${sender}</span>
-          <span class="channel-tag">${currentChannel}</span>
-          <span class="timestamp">${timestamp}</span>
-      </div>
-      <div class="vote-section">
-          <button class="vote-button upvote"><i class="bi bi-hand-thumbs-up"></i></button>
-          <span class="vote-count upvote-count">0</span>
-          <button class="vote-button downvote"><i class="bi bi-hand-thumbs-down"></i></button>
-          <span class="vote-count downvote-count">0</span>
-      </div>
-  </div>
-  <div class="message-content">${messageContent}</div>
-  `;
+    <div class="message-header">
+        <div class="message-info">
+            <span class="username" style="color:green;">me</span>
+            <span class="channel-tag">${currentChannel}</span>
+            <span class="timestamp">${timestamp}</span>
+        </div>
+        <div class="vote-section">
+            <button class="vote-button upvote"><i class="bi bi-hand-thumbs-up"></i></button>
+            <span class="vote-count upvote-count">0</span>
+            <button class="vote-button downvote"><i class="bi bi-hand-thumbs-down"></i></button>
+            <span class="vote-count downvote-count">0</span>
+        </div>
+    </div>
+    <div class="message-content">${messageContent}</div>
+    <div class="message-images-container">
+        <div class="message-images">
+            ${generateImageHTML()}
+        </div>
+    </div>
+`;
 
     if (sender === "superadmin") {
 
