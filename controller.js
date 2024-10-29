@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 !sidebar.classList.contains('collapsed')) {
                 sidebar.classList.add('collapsed');
                 chatArea.classList.add('expanded');
-                window.scrollTo(0, 0);
+                
             }
         }
     });
@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 setInterval(function () {
+    window.scrollTo(0, 0);
     if (images < 1) {
         document.getElementById('messageCard').classList.remove('show');
         document.getElementById("avatarContainer").style.visibility = "hidden";
