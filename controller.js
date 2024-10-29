@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 !sidebar.classList.contains('collapsed')) {
                 sidebar.classList.add('collapsed');
                 chatArea.classList.add('expanded');
-                window.scrollTo(0, document.body.scrollHeight);
+                
             }
         }
     });
