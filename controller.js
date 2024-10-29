@@ -89,7 +89,6 @@ setInterval(function () {
 
 
 
-
 document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.getElementById('toggleCard');
     const messageCard = document.getElementById('messageCard');
@@ -97,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleBtn.addEventListener('click', function () {
 
 
-
+        
 
 
 
@@ -127,7 +126,7 @@ document.getElementById('imageUpload').addEventListener('change', function (even
         images = images + 1;
         const reader = new FileReader();
         reader.onload = function (e) {
-            const avatarContainer = document.getElementById('avatarContainer');
+            const avatarContainer = document.getElementById('avatarContainer').style;
 
             // Create avatar card
             const avatarCard = document.createElement('div');
@@ -157,7 +156,6 @@ document.getElementById('imageUpload').addEventListener('change', function (even
         reader.readAsDataURL(file);
     }
 });
-
 
 
 function generateImageHTML() {
