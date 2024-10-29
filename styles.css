@@ -783,6 +783,12 @@ button:hover {
             transform: translateY(0);
         }
     }
+
+    .stopped {
+        
+        transform: translateY(-50px);
+        animation: none; /* This stops the animation */
+    }
     
 }
 

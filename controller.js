@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 !sidebar.classList.contains('collapsed')) {
                 sidebar.classList.add('collapsed');
                 chatArea.classList.add('expanded');
-                
+
             }
         }
     });
@@ -89,6 +89,13 @@ setInterval(function () {
 
 
 
+document.querySelector("#message").addEventListener("focus", () => {
+
+    document.querySelector(".input-area").classList.add("stopped");
+
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.getElementById('toggleCard');
     const messageCard = document.getElementById('messageCard');
@@ -96,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleBtn.addEventListener('click', function () {
 
 
-        
+
 
 
 
@@ -160,7 +167,7 @@ document.getElementById('imageUpload').addEventListener('change', function (even
 
 function generateImageHTML() {
     const avatarContainer = document.getElementById('avatarContainer');
-    
+
     let imageHTML = '<div class="message-images">'; // Start a new div for images
 
     avatarContainer.querySelectorAll('img').forEach(img => {
@@ -513,7 +520,7 @@ function sendMessage(data) {
         document.querySelector(".username").style.color = "purple";
 
     }
-    
+
     // Scroll to the bottom of the chat box
     chatBox.scrollTop = chatBox.scrollHeight;
 }
